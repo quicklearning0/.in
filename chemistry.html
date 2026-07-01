@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Library | Quick Learning</title>
+    
+    <!-- WEBSITE FAVICON -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b071e; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at 20% 50%, rgba(236, 72, 153, 0.1), transparent 50%);
+        }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+        .glass-card:hover { border-color: rgba(139, 92, 246, 0.4); transform: translateY(-4px); box-shadow: 0 20px 30px rgba(139, 92, 246, 0.05); }
+        .btn-gradient { background: linear-gradient(135deg, #a855f7, #6366f1); }
+        /* Hide scrollbar */
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-200 antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- HERO BACKGROUND WRAPPER -->
+    <div class="hero-gradient min-h-screen pb-16">
+        
+        <!-- HEADER / NAVIGATION -->
+        <nav class="h-16 sm:h-20 flex items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-[#0b071e]/80">
+            <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                <!-- Brand Logo & Back Action -->
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition border border-white/10">
+                        <i class="fas fa-arrow-left text-xs"></i>
+                    </a>
+                    <div class="flex items-center space-x-2.5 font-bold text-base sm:text-xl tracking-tight cursor-pointer">
+                        <img src="logo.jpg" alt="Logo" class="w-8 h-8 object-cover rounded-xl">
+                        <span class="text-white">Quick<span class="text-purple-400">Chemistry</span></span>
+                    </div>
+                </div>
+                <!-- Back Link Button -->
+                <a href="index.html" class="text-[11px] sm:text-xs font-semibold text-slate-400 hover:text-purple-400 transition underline">
+                    Back to Hub
+                </a>
+            </div>
+        </nav>
+
+        <!-- HERO INTRO & SEARCH FOR CHAPTERS -->
+        <header class="max-w-4xl mx-auto px-4 text-center pt-10 pb-8 sm:pt-20 sm:pb-16">
+            <span class="text-[10px] sm:text-xs font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 px-3 py-1 rounded-full">Subject Repository</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight leading-tight">
+                Chemistry <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Chapter Wise</span> Notes
+            </h1>
+            <p class="mt-3 text-xs sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+                Organic, Inorganic, aur Physical Chemistry ke saare reactions, mechanisms aur formula sheets yahan se access karein.
+            </p>
+
+            <!-- Chapter Search Mechanism -->
+            <div class="mt-6 sm:mt-8 max-w-xl mx-auto relative px-1">
+                <span class="absolute left-5 top-3.5 sm:top-4 text-slate-500 text-sm sm:text-base"><i class="fas fa-search"></i></span>
+                <input type="text" id="chapterSearch" onkeyup="searchChapters()" class="w-full bg-white/5 border border-white/10 rounded-2xl pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition font-medium" placeholder="Search chapter name or topics...">
+            </div>
+        </header>
+
+        <!-- CATEGORY FILTER ROW -->
+        <section class="max-w-5xl mx-auto px-4 mb-6 sm:mb-8">
+            <div class="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
+                <button onclick="filterClass('all')" class="bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md">All Chapters</button>
+                <button onclick="filterClass('class10')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Class 10th</button>
+                <button onclick="filterClass('class12')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Class 12th</button>
+            </div>
+        </section>
+
+        <!-- CHAPTERS CONTAINER -->
+        <main class="max-w-5xl mx-auto px-4 space-y-3.5">
+            
+            <!-- Chapter 1 Box (Aapka 1.pdf aur Class 10th Text) -->
+            <div class="chapter-card glass-card rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-class="class10">
+                <div class="flex items-start space-x-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-xs flex-shrink-0 border border-purple-500/20">01</div>
+                    <div>
+                        <!-- UPDATED TEXT HERE -->
+                        <h3 class="font-bold text-white text-sm sm:text-base chapter-title">Ch- 1 class 10th notes</h3>
+                        <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-relaxed">Chemical Reactions and Equations core concepts, balancing methods, and important board questions.</p>
+                    </div>
+                </div>
+                <!-- LINKED TO 1.PDF HERE -->
+                <a href="1.pdf" target="_blank" class="w-full sm:w-auto text-center py-3 px-5 rounded-xl btn-gradient text-white text-xs font-bold shadow-md shadow-purple-500/10 active:scale-95 transition flex items-center justify-center space-x-2">
+                    <i class="far fa-file-pdf"></i> <span>View Chapter 1 PDF</span>
+                </a>
+            </div>
+
+            <!-- Chapter 2 Box (Class 12 Example) -->
+            <div class="chapter-card glass-card rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4" data-class="class12">
+                <div class="flex items-start space-x-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-xs flex-shrink-0 border border-purple-500/20">02</div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm sm:text-base chapter-title">Solutions & Colligative Properties</h3>
+                        <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-relaxed">Raoult's Law, ideal & non-ideal solutions, elevation of boiling point, and depression of freezing point.</p>
+                    </div>
+                </div>
+                <a href="#" target="_blank" class="w-full sm:w-auto text-center py-3 px-5 rounded-xl btn-gradient text-white text-xs font-bold shadow-md shadow-purple-500/10 active:scale-95 transition flex items-center justify-center space-x-2">
+                    <i class="far fa-file-pdf"></i> <span>View Chapter 2 PDF</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT FOR SEARCH & FILTERS -->
+    <script>
+        function searchChapters() {
+            const input = document.getElementById('chapterSearch').value.toLowerCase();
+            const cards = document.getElementsByClassName('chapter-card');
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].getElementsByClassName('chapter-title')[0].innerText.toLowerCase();
+                if (title.includes(input)) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
+            }
+        }
+
+        function filterClass(classKey) {
+            const cards = document.getElementsByClassName('chapter-card');
+            const buttons = document.querySelectorAll('section button');
+            buttons.forEach(btn => { btn.className = "bg-white/5 border border-white/5 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition"; });
+            event.target.className = "bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md";
+            
+            for (let i = 0; i < cards.length; i++) {
+                if (classKey === 'all' || cards[i].getAttribute('data-class') === classKey) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
+            }
+        }
+    </script>
+</body>
+</html>
