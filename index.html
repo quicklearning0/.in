@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Learning | Access Quality Educational Notes Instantly</title>
+    
+    <link class="rounded-xl" rel="icon" type="image/jpeg" href="logo.jpg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b071e; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at 20% 50%, rgba(236, 72, 153, 0.1), transparent 50%);
+        }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
+        .glass-card:hover { border-color: rgba(139, 92, 246, 0.4); transform: translateY(-4px); box-shadow: 0 20px 30px rgba(139, 92, 246, 0.05); }
+        .btn-gradient { background: linear-gradient(135deg, #a855f7, #6366f1); }
+        .modal-bg { background: rgba(11, 7, 30, 0.85); backdrop-filter: blur(12px); }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-200 antialiased selection:bg-purple-500 selection:text-white">
+
+    <div class="hero-gradient min-h-screen pb-16">
+        
+        <nav class="h-16 sm:h-20 flex items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-[#0b071e]/80">
+            <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                
+                <div onclick="window.location.reload()" class="flex items-center space-x-2.5 font-bold text-lg sm:text-xl tracking-tight cursor-pointer">
+                    <img src="logo.jpg" alt="Quick Learning Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-cover rounded-xl drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]">
+                    <span class="text-white">Quick<span class="text-purple-400">Learning</span></span>
+                </div>
+                
+                <div class="flex items-center space-x-3">
+                    <button id="loginBtn" onclick="toggleModal('loginModal', true)" class="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 border border-white/10 rounded-xl bg-white/5 transition">
+                        <i class="fas fa-user-circle mr-1.5"></i> Login / Register
+                    </button>
+
+                    <div id="userProfileArea" class="hidden relative flex items-center space-x-2 bg-white/5 border border-white/10 rounded-xl p-1.5 cursor-pointer" onclick="toggleDropdown(event)">
+                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs overflow-hidden">
+                            <span id="userInitials">U</span>
+                        </div>
+                        <span id="navUsername" class="text-xs font-semibold text-white max-w-[90px] truncate hidden sm:inline">User</span>
+                        <i class="fas fa-chevron-down text-[10px] text-slate-400 px-1"></i>
+                        
+                        <div id="profileDropdown" class="hidden absolute right-0 top-12 w-40 bg-[#130f2b] border border-white/10 rounded-xl shadow-xl py-1 z-50">
+                            <button onclick="openEditProfile()" class="w-full text-left px-4 py-2 text-xs text-slate-300 hover:bg-white/5 hover:text-white flex items-center space-x-2">
+                                <i class="fas fa-user-edit text-purple-400"></i> <span>Edit Profile</span>
+                            </button>
+                            <button onclick="window.handleLogout()" class="w-full text-left px-4 py-2 text-xs text-red-400 hover:bg-white/5 flex items-center space-x-2 border-t border-white/5">
+                                <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onclick="checkAndScrollToUpload()" class="btn-gradient text-white text-[11px] sm:text-xs font-bold px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-md hover:opacity-95 transition">
+                        <i class="fas fa-upload mr-1.5"></i> Upload
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <header class="max-w-4xl mx-auto px-4 text-center pt-10 pb-8 sm:pt-20 sm:pb-16">
+            <span class="text-[10px] sm:text-xs font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 px-3 py-1 rounded-full">Smart Study Platform</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight leading-tight">
+                Stop Searching, Start <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Quick Learning</span>
+            </h1>
+            <p class="mt-3 text-xs sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+                Get instant access to hand-written blueprints, structured topic summaries, and examination notes tailored for standard curriculum.
+            </p>
+
+            <div class="mt-6 sm:mt-8 max-w-xl mx-auto relative px-1">
+                <span class="absolute left-5 top-3.5 sm:top-4 text-slate-500 text-sm sm:text-base"><i class="fas fa-search"></i></span>
+                <input type="text" id="noteSearch" onkeyup="searchNotes()" class="w-full bg-white/5 border border-white/10 rounded-2xl pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition font-medium" placeholder="Search by topic, subject or keywords...">
+            </div>
+        </header>
+
+        <section id="subjects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
+            <div class="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
+                <button onclick="filterSubject('all')" class="bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md shadow-purple-600/10">All Resources</button>
+                <button onclick="filterSubject('physics')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Physics</button>
+                <button onclick="filterSubject('mathematics')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Mathematics</button>
+                <button onclick="filterSubject('chemistry')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Chemistry</button>
+                <button onclick="filterSubject('computer')" class="bg-white/5 border border-white/5 hover:border-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition">Computer Science</button>
+            </div>
+        </section>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="physics">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[9px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded-md">Physics</span>
+                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white tracking-tight note-title">Physics Chapter-Wise Notes Collection</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Complete sequence of Class 11 & 12 formulas, core derivations, blueprints, and question summaries.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-purple-400 mr-1"></i> Requires Login</span>
+                        <button onclick="secureNavigate('physics.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
+                            <span>Open Physics Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="mathematics">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[9px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-md">Mathematics</span>
+                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white tracking-tight note-title">Mathematics Chapter-Wise Notes Collection</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Definite and indefinite integration rules, algebra shortcuts, continuous area problems and calculus guides.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-purple-400 mr-1"></i> Requires Login</span>
+                        <button onclick="secureNavigate('math.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
+                            <span>Open Math Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="chemistry">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[9px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md">Chemistry</span>
+                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white tracking-tight note-title">Chemistry Chapter-Wise Notes Collection</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Name reactions summary sheet from Organic modules, physical equations, and detailed electron pathways.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-purple-400 mr-1"></i> Requires Login</span>
+                        <button onclick="secureNavigate('chemistry.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
+                            <span>Open Chemistry Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="computer">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[9px] font-bold uppercase tracking-wider bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-md">Computer Science</span>
+                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white tracking-tight note-title">Computer Science Notes Collection</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Asymptotic notation tracking, core pointer arrays, data structures, algorithms and stack sorting logic.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-purple-400 mr-1"></i> Requires Login</span>
+                        <button onclick="secureNavigate('computer.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
+                            <span>Open Computer Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section id="upload" class="max-w-3xl mx-auto px-4 pt-20 sm:pt-24">
+            <div class="bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
+                <div class="text-center mb-6">
+                    <div class="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mx-auto mb-3">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-bold text-white">Contribute to Quick Learning</h2>
+                    <p class="text-[11px] text-slate-400 mt-1">Share your clean study materials or notes files to help peers worldwide.</p>
+                </div>
+
+                <form action="https://formsubmit.co/rishantbhaumik@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Note Title</label>
+                            <input type="text" name="Note Title" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="e.g. Thermodynamics Part 1">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Subject Area</label>
+                            <select name="Subject" class="w-full bg-[#130f2b] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-slate-300 focus:outline-none focus:border-purple-500">
+                                <option value="physics">Physics</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="computer">Computer Science</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Select Document (PDF/Image)</label>
+                        <input type="file" name="Attachment" required class="w-full bg-white/5 border border-white/10 border-dashed rounded-xl px-4 py-3 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-purple-600 file:text-white hover:file:opacity-95 file:cursor-pointer">
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20 active:scale-95 transition-transform">
+                        Submit Note Package
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="text-center mb-6 mt-2">
+                <h3 class="text-lg font-bold text-white tracking-tight">Access Quick Learning</h3>
+                <p class="text-[11px] text-slate-400 mt-1">Please verify identity to unlock system resources.</p>
+            </div>
+
+            <div id="loginMainOptions" class="space-y-4">
+                <button onclick="window.simulateGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-white text-slate-900 font-bold text-xs py-3 rounded-xl shadow-lg hover:bg-slate-100 active:scale-98 transition">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24">
+                        <path fill="#EA4335" d="M12 5.04c1.64 0 3.12.56 4.28 1.67l3.2-3.2C17.52 1.58 14.96 1 12 1 7.35 1 3.4 3.65 1.5 7.5l3.86 3C6.27 7.77 8.93 5.04 12 5.04z"/>
+                        <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.27H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.57l3.76 2.91c2.2-2.03 3.49-5.02 3.49-8.72z"/>
+                        <path fill="#FBBC05" d="M5.36 14.5c-.24-.72-.38-1.49-.38-2.3s.14-1.58.38-2.3L1.5 6.9C.54 8.84 0 11.01 0 12.3s.54 3.46 1.5 5.4l3.86-3z"/>
+                        <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.76-2.91c-1.1.74-2.52 1.18-4.2 1.18-3.07 0-5.73-2.73-6.66-5.46l-3.86 3C3.4 20.35 7.35 23 12 23z"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                </button>
+
+                <div class="flex items-center my-4">
+                    <div class="flex-1 h-[1px] bg-white/10"></div>
+                    <span class="px-3 text-[10px] font-bold text-slate-500 uppercase">Or use Phone</span>
+                    <div class="flex-1 h-[1px] bg-white/10"></div>
+                </div>
+
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Phone Number</label>
+                    <div class="flex space-x-2">
+                        <span class="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-slate-400 flex items-center">+91</span>
+                        <input type="tel" id="userPhone" maxlength="10" required class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="Enter 10 digit number">
+                    </div>
+                </div>
+
+                <button onclick="window.goToOTP()" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20 active:scale-98 transition">
+                    Send OTP Verification
+                </button>
+            </div>
+
+            <div id="loginOTPSection" class="hidden space-y-4">
+                <button onclick="backToMainLogin()" class="text-[10px] font-bold text-purple-400 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Change Number</button>
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Enter 6-Digit OTP</label>
+                    <input type="text" id="otpInput" maxlength="6" class="w-full text-center bg-white/5 border border-white/10 rounded-xl py-3 text-sm tracking-widest text-white focus:outline-none focus:border-purple-500 font-bold" placeholder="••••••">
+                </div>
+                <button onclick="window.simulatePhoneLogin()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition">
+                    Verify & Login
+                </button>
+            </div>
+            
+            <div id="recaptcha-container" class="mt-2"></div>
+        </div>
+    </div>
+
+    <div id="editProfileModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('editProfileModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-6">
+                <h3 class="text-lg font-bold text-white tracking-tight">Edit Profile</h3>
+                <p class="text-[11px] text-slate-400 mt-1">Update your display name.</p>
+            </div>
+            <form onsubmit="window.handleProfileUpdate(event)" class="space-y-4">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Display Name</label>
+                    <input type="text" id="editUsername" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for login session check
+        window.isUserLoggedIn = false;
+
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (show) { modal.classList.remove('hidden'); } else { modal.classList.add('hidden'); }
+        }
+        function toggleDropdown(e) {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
+            e.stopPropagation();
+        }
+        window.onclick = function() {
+            const dropdown = document.getElementById('profileDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) { dropdown.classList.add('hidden'); }
+        }
+        function backToMainLogin() {
+            document.getElementById('loginOTPSection').classList.add('hidden');
+            document.getElementById('loginMainOptions').classList.remove('hidden');
+        }
+        function openEditProfile() {
+            toggleModal('editProfileModal', true);
+        }
+
+        // NAVIGATION GUARD LOGIC
+        function secureNavigate(targetPage) {
+            if (window.isUserLoggedIn) {
+                window.location.href = targetPage;
+            } else {
+                toggleModal('loginModal', true);
+            }
+        }
+        function checkAndScrollToUpload() {
+            if (window.isUserLoggedIn) {
+                document.getElementById('upload').scrollIntoView({behavior: 'smooth'});
+            } else {
+                toggleModal('loginModal', true);
+            }
+        }
+
+        function searchNotes() {
+            const input = document.getElementById('noteSearch').value.toLowerCase();
+            const cards = document.getElementsByClassName('note-card');
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].getElementsByClassName('note-title')[0].innerText.toLowerCase();
+                if (title.includes(input)) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
+            }
+        }
+        function filterSubject(subjectKey) {
+            const cards = document.getElementsByClassName('note-card');
+            const buttons = document.querySelectorAll('#subjects button');
+            buttons.forEach(btn => { btn.className = "bg-white/5 border border-white/5 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition"; });
+            event.target.className = "bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md";
+            for (let i = 0; i < cards.length; i++) {
+                if (subjectKey === 'all' || cards[i].getAttribute('data-subject') === subjectKey) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            signInWithPopup, 
+            GoogleAuthProvider, 
+            signInWithPhoneNumber, 
+            RecaptchaVerifier,
+            updateProfile,
+            signOut,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBniNpeLAd89NMqxkR9QuECjVtQ9zMT1H0",
+            authDomain: "quicklearn-3fb48.firebaseapp.com",
+            projectId: "quicklearn-3fb48",
+            storageBucket: "quicklearn-3fb48.firebasestorage.app",
+            messagingSenderId: "1081595292793",
+            appId: "1:1081595292793:web:d758223a869782c8abb8a8"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+            'size': 'invisible'
+        });
+
+        let confirmationResultGlobal = null;
+
+        window.simulateGoogleLogin = async function() {
+            try {
+                await signInWithPopup(auth, googleProvider);
+                toggleModal('loginModal', false);
+            } catch (error) {
+                console.error(error);
+                alert("Google sign-in error: " + error.message);
+            }
+        };
+
+        window.goToOTP = async function() {
+            const phone = document.getElementById('userPhone').value.trim();
+            if (phone.length < 10) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+            const fullPhoneNumber = "+91" + phone;
+            const appVerifier = window.recaptchaVerifier;
+
+            try {
+                const confirmationResult = await signInWithPhoneNumber(auth, fullPhoneNumber, appVerifier);
+                confirmationResultGlobal = confirmationResult;
+                document.getElementById('loginMainOptions').classList.add('hidden');
+                document.getElementById('loginOTPSection').classList.remove('hidden');
+            } catch (error) {
+                console.error(error);
+                alert("Error sending OTP: " + error.message);
+            }
+        };
+
+        window.simulatePhoneLogin = async function() {
+            const otp = document.getElementById('otpInput').value.trim();
+            if (otp.length < 6) {
+                alert("Please enter the complete 6-digit OTP.");
+                return;
+            }
+            try {
+                const result = await confirmationResultGlobal.confirm(otp);
+                const user = result.user;
+                if (!user.displayName) {
+                    await updateProfile(user, { displayName: "User " + user.phoneNumber.substring(8) });
+                }
+                toggleModal('loginModal', false);
+                backToMainLogin();
+            } catch (error) {
+                alert("Invalid OTP code. Try again.");
+            }
+        };
+
+        window.handleProfileUpdate = async function(e) {
+            e.preventDefault();
+            const newName = document.getElementById('editUsername').value.trim();
+            const user = auth.currentUser;
+            if (user && newName) {
+                try {
+                    await updateProfile(user, { displayName: newName });
+                    updateUI(user);
+                    toggleModal('editProfileModal', false);
+                    alert("Profile updated!");
+                } catch (error) {
+                    alert("Error updating profile: " + error.message);
+                }
+            }
+        };
+
+        window.handleLogout = async function() {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        // OBSERVE SESSION CHANGES WITH AUTO POPUP LOGIC
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.isUserLoggedIn = true;
+                updateUI(user);
+            } else {
+                window.isUserLoggedIn = false;
+                document.getElementById('loginBtn').classList.remove('hidden');
+                document.getElementById('userProfileArea').classList.add('hidden');
+                
+                // AUTOMATIC LOGIN POPUP WHEN USER IS NOT LOGGED IN ON PAGE LOAD
+                setTimeout(() => {
+                    toggleModal('loginModal', true);
+                }, 800);
+            }
+        });
+
+        function updateUI(user) {
+            const displayName = user.displayName || "Student";
+            document.getElementById('loginBtn').classList.add('hidden');
+            document.getElementById('userProfileArea').classList.remove('hidden');
+            document.getElementById('navUsername').innerText = displayName;
+            document.getElementById('userInitials').innerText = displayName.charAt(0).toUpperCase();
+            document.getElementById('editUsername').value = displayName;
+        }
+    </script>
+</body>
+</html>
