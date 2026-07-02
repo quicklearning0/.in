@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Learning | Access Quality Educational Notes Instantly</title>
     
-    <!-- WEBSITE FAVICON -->
     <link class="rounded-xl" rel="icon" type="image/jpeg" href="logo.jpg">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -33,7 +29,6 @@
 
     <div class="hero-gradient min-h-screen pb-16">
         
-        <!-- HEADER / NAVIGATION -->
         <nav class="h-16 sm:h-20 flex items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-[#0b071e]/80">
             <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <div onclick="window.location.reload()" class="flex items-center space-x-2.5 font-bold text-lg sm:text-xl tracking-tight cursor-pointer">
@@ -51,13 +46,13 @@
                     </button>
 
                     <div id="userProfileArea" class="hidden relative flex items-center space-x-2 bg-white/5 border border-white/10 rounded-xl p-1.5 cursor-pointer" onclick="toggleDropdown(event)">
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs overflow-hidden">
+                        <div id="userAvatarContainer" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs overflow-hidden">
                             <span id="userInitials">U</span>
                         </div>
                         <span id="navUsername" class="text-xs font-semibold text-white max-w-[90px] truncate hidden sm:inline">User</span>
                         <i class="fas fa-chevron-down text-[10px] text-slate-400 px-1"></i>
                         
-                        <div id="profileDropdown" class="hidden absolute right-0 top-12 w-40 bg-[#130f2b] border border-white/10 rounded-xl shadow-xl py-1 z-50">
+                        <div id="profileDropdown" class="hidden absolute right-0 top-12 w-44 bg-[#130f2b] border border-white/10 rounded-xl shadow-xl py-1 z-50">
                             <button onclick="openEditProfile()" class="w-full text-left px-4 py-2 text-xs text-slate-300 hover:bg-white/5 hover:text-white flex items-center space-x-2">
                                 <i class="fas fa-user-edit text-purple-400"></i> <span>Edit Profile</span>
                             </button>
@@ -74,15 +69,13 @@
             </div>
         </nav>
 
-        <!-- OFFICIAL QUICK LEARNING HERO BANNER IMAGE -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8">
             <div class="relative overflow-hidden rounded-3xl border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.15)] bg-[#0b071e] transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
                 <img src="ChatGPT Image Jul 2, 2026, 09_56_54 AM.png" alt="Quick Learning Official Banner" class="w-full h-auto object-cover rounded-3xl block">
             </div>
         </section>
 
-        <!-- HERO INTRO BANNER -->
-        <header class="max-w-4xl mx-auto px-4 text-center pt-8 pb-8 sm:pt-14 sm:pb-12">
+        <header class="max-w-4xl mx-auto px-4 text-center pt-8 pb-8 sm:pt-12 sm:pb-12">
             <span class="text-[10px] sm:text-xs font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 px-3 py-1 rounded-full">Smart Study Platform</span>
             <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight leading-tight">
                 Stop Searching, Start <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Quick Learning</span>
@@ -97,7 +90,25 @@
             </div>
         </header>
 
-        <!-- SUBJECT FILTER ROW -->
+        <section id="activeSubscriptionStatusBox" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 hidden">
+            <div class="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-2 border-emerald-500/30 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl shadow-lg border border-emerald-500/30">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Active Membership Status</h4>
+                        <p id="activePlanNameText" class="text-base font-extrabold text-white">2 Months Access Pack</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span id="activePlanDaysLeftText" class="text-xs font-black text-emerald-400 bg-emerald-500/20 px-4 py-2 rounded-2xl border border-emerald-500/30 tracking-wide animate-pulse">
+                        Calculating...
+                    </span>
+                </div>
+            </div>
+        </section>
+
         <section id="subjects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
             <div class="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
                 <button onclick="filterSubject('all')" class="bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md shadow-purple-600/10">All Resources</button>
@@ -108,10 +119,8 @@
             </div>
         </section>
 
-        <!-- NOTES ARCHIVE GRID -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Physics -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="physics">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -129,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- Mathematics -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="mathematics">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -147,7 +155,6 @@
                     </div>
                 </div>
 
-                <!-- Chemistry -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="chemistry">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -165,7 +172,6 @@
                     </div>
                 </div>
 
-                <!-- Computer Science -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="computer">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -185,11 +191,9 @@
             </div>
         </main>
 
-        <!-- PRICING SECTION -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
                 
-                <!-- SHORT TERM PACK -->
                 <div class="bg-[#130f2b]/60 border border-white/5 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md min-h-[350px]">
                     <div>
                         <span class="text-[10px] font-bold tracking-wider uppercase text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">Short Term</span>
@@ -202,21 +206,19 @@
                     </button>
                 </div>
 
-                <!-- SEMESTER PACK (POPULAR) -->
                 <div class="bg-[#130f2b]/90 border-2 border-purple-500 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md transform scale-105 shadow-2xl shadow-purple-500/10 min-h-[380px]">
                     <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[10px] font-black tracking-widest uppercase text-white btn-gradient px-4 py-1 rounded-full shadow-md">Popular</span>
                     <div>
                         <span class="text-[10px] font-bold tracking-wider uppercase text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full mt-2 inline-block">Semester Pack</span>
-                        <h3 class="text-xl font-bold text-white mt-4">6 Months Access</h3>
+                        <h3 class="text-xl font-bold text-white mt-4">4 Months Access</h3>
                         <div class="text-4xl font-black text-white my-6">₹40</div>
                         <p class="text-xs text-slate-400 leading-relaxed">Complete coverage for whole session blueprints and questions.</p>
                     </div>
-                    <button onclick="handlePlanSelection('6 Months Access (₹40)')" class="mt-8 w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-95 transition-transform">
+                    <button onclick="handlePlanSelection('4 Months Access (₹40)')" class="mt-8 w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-95 transition-transform">
                         Buy Now
                     </button>
                 </div>
 
-                <!-- BEST VALUE PACK -->
                 <div class="bg-[#130f2b]/60 border border-white/5 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md min-h-[350px]">
                     <div>
                         <span class="text-[10px] font-bold tracking-wider uppercase text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">Best Value</span>
@@ -232,7 +234,6 @@
             </div>
         </section>
 
-        <!-- HIDDEN BACKEND ROUTING GATEWAY -->
         <form id="hiddenEmailForm" action="https://formsubmit.co/rishantbhaumik@gmail.com" method="POST" class="hidden">
             <input type="text" name="Student Name" id="emailFormName">
             <input type="text" name="Redeem Code Used" id="emailFormCode">
@@ -247,7 +248,6 @@
             <input type="text" name="Payment Status" value="Verified Via Security Gateway - Auto Approved">
         </form>
 
-        <!-- CONTRIBUTE PORTION -->
         <section id="upload" class="max-w-3xl mx-auto px-4 pt-12">
             <div class="bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
                 <div class="text-center mb-6">
@@ -283,14 +283,14 @@
             </div>
         </section>
 
-        <!-- FOOTER WITH FOLLOW US PART -->
         <footer class="max-w-4xl mx-auto px-4 pt-20 text-center">
             <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-[10px] text-slate-600 font-medium">&copy; 2026 Quick Learning Center. All rights reserved.</p>
                 
-                <!-- FOLLOW US SECTION -->
                 <div class="flex items-center space-x-4" id="followUsPart">
                     <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Follow Us:</span>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-telegram-plane"></i></a>
                     <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-instagram"></i></a>
@@ -299,7 +299,104 @@
         </footer>
     </div>
 
-    <!-- GENERAL REDEEM CODE MODAL -->
+    <div id="customAlertModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#120d2b] border border-purple-500/30 rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl relative animate-fade-in">
+            <div id="customAlertIconBox" class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 bg-purple-500/10 text-purple-400">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <h3 id="customAlertTitle" class="text-base font-bold text-white tracking-tight">Notification</h3>
+            <p id="customAlertMessage" class="text-xs text-slate-400 mt-2.5 leading-relaxed font-medium"></p>
+            <button onclick="closeCustomAlert()" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-white font-bold text-xs shadow-md active:scale-95 transition-transform">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <div class="text-center mb-6 mt-2">
+                <h3 class="text-lg font-bold text-white">Access Quick Learning</h3>
+                <p class="text-xs text-slate-400 mt-1">Choose a verification route below</p>
+            </div>
+            
+            <div class="flex border-b border-white/5 mb-4 text-xs font-bold text-center">
+                <button id="tabEmailBtn" onclick="switchAuthTab('email')" class="w-1/2 pb-2 text-purple-400 border-b-2 border-purple-500">Email Login</button>
+                <button id="tabPhoneBtn" onclick="switchAuthTab('phone')" class="w-1/2 pb-2 text-slate-400">Phone Gateway</button>
+            </div>
+
+            <div id="authEmailContainer" class="space-y-3">
+                <input type="email" id="authEmailInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="name@example.com">
+                <input type="password" id="authPasswordInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="Enter security password">
+                <button onclick="window.customEmailAuthAction()" class="w-full py-2.5 btn-gradient text-white text-xs font-bold rounded-xl shadow-md">Verify Security Email</button>
+            </div>
+
+            <div id="authPhoneContainer" class="hidden space-y-3">
+                <div id="phoneInputScreen" class="space-y-3">
+                    <div class="flex space-x-2">
+                        <span class="bg-white/5 border border-white/10 rounded-xl text-xs px-3 py-2.5 text-slate-400 font-bold">+91</span>
+                        <input type="tel" id="authPhoneInput" maxlength="10" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 tracking-wider" placeholder="Enter 10 digit number">
+                    </div>
+                    <button onclick="sendPhoneOTPSimulation()" class="w-full py-2.5 btn-gradient text-white text-xs font-bold rounded-xl shadow-md">Request OTP Key</button>
+                </div>
+                <div id="phoneOtpScreen" class="hidden space-y-3">
+                    <p class="text-[11px] text-emerald-400 font-medium text-center"><i class="fas fa-paper-plane mr-1"></i> OTP security packet dispatched successfully!</p>
+                    <input type="text" id="authOtpInput" maxlength="6" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 text-center tracking-widest font-bold" placeholder="• • • • • •">
+                    <button onclick="verifyPhoneOTPSimulation()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md">Submit Code Validation</button>
+                </div>
+            </div>
+
+            <div class="relative my-5 text-center">
+                <hr class="border-white/5">
+                <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#110c26] px-3 text-[10px] uppercase font-bold text-slate-500 tracking-widest">or</span>
+            </div>
+
+            <button onclick="window.simulateGoogleLogin()" class="w-full flex items-center justify-center space-x-2.5 bg-white text-slate-900 font-bold text-xs py-2.5 rounded-xl transition hover:bg-slate-100">
+                <i class="fab fa-google text-sm"></i> <span>Continue with Google Account</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="editProfileModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('editProfileModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+            
+            <div class="text-center mb-5 mt-2">
+                <h3 class="text-base font-bold text-white">Modify Profile Console</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Customize your cloud terminal display metadata</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1.5">Change Display Name</label>
+                    <input type="text" id="profileEditNameField" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 font-medium" placeholder="Update your name">
+                </div>
+
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-2">Select Active Terminal Avatar</label>
+                    <div class="grid grid-cols-4 gap-2.5" id="avatarSelectionGrid">
+                        <div onclick="pickAvatar('from-pink-500 to-rose-500', 'P')" class="avatar-option border-2 border-transparent rounded-xl p-1 bg-white/5 cursor-pointer flex flex-col items-center justify-center hover:bg-white/10 transition">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-pink-500 to-rose-500 flex items-center justify-center text-white font-bold text-xs">P</div>
+                        </div>
+                        <div onclick="pickAvatar('from-cyan-500 to-blue-500', 'C')" class="avatar-option border-2 border-transparent rounded-xl p-1 bg-white/5 cursor-pointer flex flex-col items-center justify-center hover:bg-white/10 transition">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-xs">C</div>
+                        </div>
+                        <div onclick="pickAvatar('from-amber-500 to-orange-500', 'A')" class="avatar-option border-2 border-transparent rounded-xl p-1 bg-white/5 cursor-pointer flex flex-col items-center justify-center hover:bg-white/10 transition">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold text-xs">A</div>
+                        </div>
+                        <div onclick="pickAvatar('from-emerald-500 to-teal-500', 'E')" class="avatar-option border-2 border-transparent rounded-xl p-1 bg-white/5 cursor-pointer flex flex-col items-center justify-center hover:bg-white/10 transition">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-xs">E</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="saveProfileChanges()" class="w-full py-2.5 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-98 transition">
+                    Save Profile Log Updates
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div id="redeemModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-amber-500/30 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
             <button onclick="toggleModal('redeemModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white text-sm">
@@ -323,7 +420,7 @@
                 </div>
                 <div>
                     <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Enter Redeem Code</label>
-                    <input type="text" id="redeemCodeInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500 uppercase font-bold tracking-wider" placeholder="e.g. FREEFIRE">
+                    <input type="text" id="redeemCodeInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500 uppercase font-bold tracking-wider" placeholder="e.g. 2MONTH, 4MONTH, 1YEAR">
                 </div>
 
                 <div id="verifyStatusBox" class="hidden text-xs font-semibold text-center p-2 rounded-xl"></div>
@@ -335,7 +432,6 @@
         </div>
     </div>
 
-    <!-- POPUP MODAL FOR PRICING CARDS "BUY NOW" GATEWAY -->
     <div id="paymentGateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-purple-500/40 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
             <button onclick="closePaymentGate()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
@@ -369,7 +465,6 @@
         </div>
     </div>
 
-    <!-- UN-CANCELABLE SUCCESS TIMER POPUP -->
     <div id="paymentSuccessModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-emerald-500/30 rounded-3xl w-full max-w-sm p-8 text-center shadow-2xl relative">
             <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
@@ -386,34 +481,85 @@
         </div>
     </div>
 
-    <!-- AUTH LOGIN MODAL -->
-    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
-        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
-            <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
-            <div class="text-center mb-6 mt-2">
-                <h3 class="text-lg font-bold text-white">Access Quick Learning</h3>
-            </div>
-            <div id="loginMainOptions" class="space-y-4">
-                <button onclick="window.simulateGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-white text-slate-900 font-bold text-xs py-3 rounded-xl">
-                    <span>Continue with Google</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- INTERFACE LOGIC SCRIPT ENGINE -->
     <script>
         window.isUserLoggedIn = false;
         let pendingNavigationTarget = "";
         let selectedPackName = "";
+        
+        let selectedAvatarGradient = "from-purple-500 to-indigo-500";
+        let selectedAvatarChar = "U";
+
+        // APP CUSTOM ALERT SYSTEM ENGINE
+        function triggerCustomAlert(message, title = "Notification", type = "info") {
+            document.getElementById('customAlertTitle').innerText = title;
+            document.getElementById('customAlertMessage').innerText = message;
+            
+            const iconBox = document.getElementById('customAlertIconBox');
+            if (type === "warning") {
+                iconBox.className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 bg-amber-500/10 text-amber-400";
+                iconBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+            } else if (type === "error") {
+                iconBox.className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 bg-red-500/10 text-red-400";
+                iconBox.innerHTML = '<i class="fas fa-times-circle"></i>';
+            } else {
+                iconBox.className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 bg-purple-500/10 text-purple-400";
+                iconBox.innerHTML = '<i class="fas fa-info-circle"></i>';
+            }
+            toggleModal('customAlertModal', true);
+        }
+
+        function closeCustomAlert() {
+            toggleModal('customAlertModal', false);
+        }
 
         function toggleModal(modalId, show) {
             const modal = document.getElementById(modalId);
+            if (!modal) return;
             if (show) { modal.classList.remove('hidden'); } else { modal.classList.add('hidden'); }
         }
 
         function openRedeemModal() {
+            if (!window.isUserLoggedIn) {
+                triggerCustomAlert("Aapka login hona jaroori hai! Please first Login or Register.", "Login Required", "warning");
+                toggleModal('loginModal', true);
+                return;
+            }
             toggleModal('redeemModal', true);
+        }
+
+        // AUTO COUNTDOWN CHECK ENGINE
+        function updateSubscriptionTimerUI() {
+            const isActive = localStorage.getItem('isPremiumActive') === 'true';
+            const purchaseTime = localStorage.getItem('premiumPurchaseTime');
+            const durationDays = parseInt(localStorage.getItem('premiumDurationDays') || "60");
+            const planTitle = localStorage.getItem('premiumPlanTitle') || "2 Months Access Pack";
+
+            const widget = document.getElementById('activeSubscriptionStatusBox');
+            const activePlanText = document.getElementById('activePlanNameText');
+            const daysLeftText = document.getElementById('activePlanDaysLeftText');
+
+            if (isActive && purchaseTime) {
+                const now = Date.now();
+                const differenceMs = now - parseInt(purchaseTime);
+                const daysPassed = differenceMs / (1000 * 60 * 60 * 24);
+                const daysLeft = Math.ceil(durationDays - daysPassed);
+
+                if (daysLeft <= 0) {
+                    localStorage.removeItem('isPremiumActive');
+                    localStorage.removeItem('premiumPurchaseTime');
+                    localStorage.removeItem('premiumDurationDays');
+                    localStorage.removeItem('premiumPlanTitle');
+                    widget.classList.add('hidden');
+                    triggerCustomAlert("⚠️ Aapka Premium Pack expire ho chuka hai. Kripya naya pack purchase karein!", "Pack Expired", "warning");
+                    setTimeout(() => { window.location.reload(); }, 2500);
+                } else {
+                    widget.classList.remove('hidden');
+                    activePlanText.innerText = planTitle;
+                    daysLeftText.innerText = daysLeft + (daysLeft === 1 ? " Day Left" : " Days Left");
+                }
+            } else {
+                widget.classList.add('hidden');
+            }
         }
 
         function secureNavigate(targetPage) {
@@ -448,20 +594,33 @@
             statusBox.innerText = "🔄 Scanning Database & Auto-Verifying Code...";
 
             setTimeout(() => {
-                if (codeField === "chut") {
+                let duration = 0;
+                let cleanPlanTitle = "";
+
+                if (codeField === "2month") {
+                    duration = 60;
+                    cleanPlanTitle = "2 Months Access Pack";
+                } else if (codeField === "4month") {
+                    duration = 120;
+                    cleanPlanTitle = "4 Months Access Pack";
+                } else if (codeField === "1year") {
+                    duration = 365;
+                    cleanPlanTitle = "1 Year Access Pack";
+                }
+
+                if (duration > 0) {
                     statusBox.innerHTML = "✅ Code Verified! Syncing details to server...";
                     
                     document.getElementById('emailFormName').value = nameField;
                     document.getElementById('emailFormCode').value = codeField.toUpperCase();
                     
+                    localStorage.setItem('premiumDurationDays', duration.toString());
+                    localStorage.setItem('premiumPlanTitle', cleanPlanTitle);
+                    localStorage.setItem('premiumPurchaseTime', Date.now().toString());
+
                     const emailForm = document.getElementById('hiddenEmailForm');
                     const formData = new FormData(emailForm);
-                    
-                    fetch(emailForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
+                    fetch(emailForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
 
                     setTimeout(() => {
                         toggleModal('redeemModal', false);
@@ -478,6 +637,12 @@
 
         /* PRICING PLANS BUY NOW LOGIC CONSOLE */
         function handlePlanSelection(planName) {
+            if (!window.isUserLoggedIn) {
+                triggerCustomAlert("Aapka login hona jaroori hai! Please first Login or Register.", "Login Required", "warning");
+                toggleModal('loginModal', true);
+                return;
+            }
+
             selectedPackName = planName;
             document.getElementById('modalPlanTitle').innerText = "Unlock " + planName;
             
@@ -511,7 +676,21 @@
             statusBox.innerText = "🔄 Auto-verifying code legitimacy with network logs...";
 
             setTimeout(() => {
-                if (codeVal === "freefire") {
+                let duration = 0;
+                let cleanPlanTitle = "";
+
+                if (codeVal === "2month") {
+                    duration = 60;
+                    cleanPlanTitle = "2 Months Access Pack";
+                } else if (codeVal === "4month") {
+                    duration = 120;
+                    cleanPlanTitle = "4 Months Access Pack";
+                } else if (codeVal === "1year") {
+                    duration = 365;
+                    cleanPlanTitle = "1 Year Access Pack";
+                }
+
+                if (duration > 0) {
                     statusBox.className = "text-xs font-semibold text-center p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400";
                     statusBox.innerHTML = "✅ Code Approved! Dispatched logs to center database.";
 
@@ -519,14 +698,13 @@
                     document.getElementById('payFormPlan').value = selectedPackName;
                     document.getElementById('payFormCode').value = codeVal.toUpperCase();
 
+                    localStorage.setItem('premiumDurationDays', duration.toString());
+                    localStorage.setItem('premiumPlanTitle', cleanPlanTitle);
+                    localStorage.setItem('premiumPurchaseTime', Date.now().toString());
+
                     const payloadForm = document.getElementById('hiddenPaymentForm');
                     const rawData = new FormData(payloadForm);
-                    
-                    fetch(payloadForm.action, {
-                        method: 'POST',
-                        body: rawData,
-                        headers: { 'Accept': 'application/json' }
-                    });
+                    fetch(payloadForm.action, { method: 'POST', body: rawData, headers: { 'Accept': 'application/json' } });
 
                     setTimeout(() => {
                         closePaymentGate();
@@ -563,8 +741,6 @@
             }, 1000);
         }
 
-        view_initials_loader = function() {}
-
         function searchNotes() {
             const input = document.getElementById('noteSearch').value.toLowerCase();
             const cards = document.getElementsByClassName('note-card');
@@ -580,12 +756,116 @@
                 if (subjectKey === 'all' || cards[i].getAttribute('data-subject') === subjectKey) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
             }
         }
+
+        function checkAndScrollToUpload() {
+            const el = document.getElementById('upload');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function switchAuthTab(type) {
+            const tabEmail = document.getElementById('tabEmailBtn');
+            const tabPhone = document.getElementById('tabPhoneBtn');
+            const emailBox = document.getElementById('authEmailContainer');
+            const phoneBox = document.getElementById('authPhoneContainer');
+
+            if (type === 'email') {
+                tabEmail.className = "w-1/2 pb-2 text-purple-400 border-b-2 border-purple-500";
+                tabPhone.className = "w-1/2 pb-2 text-slate-400 border-b-0";
+                emailBox.classList.remove('hidden');
+                phoneBox.classList.add('hidden');
+            } else {
+                tabPhone.className = "w-1/2 pb-2 text-purple-400 border-b-2 border-purple-500";
+                tabEmail.className = "w-1/2 pb-2 text-slate-400 border-b-0";
+                phoneBox.classList.remove('hidden');
+                emailBox.classList.add('hidden');
+            }
+        }
+
+        window.customEmailAuthAction = function() {
+            const mailVal = document.getElementById('authEmailInput').value.trim();
+            const passVal = document.getElementById('authPasswordInput').value.trim();
+            if(!mailVal || !passVal) { 
+                triggerCustomAlert("Please complete both Email and Password fields!", "Input Warning", "warning"); 
+                return; 
+            }
+            triggerManualLoginState(mailVal.split('@')[0]);
+        };
+
+        function sendPhoneOTPSimulation() {
+            const ph = document.getElementById('authPhoneInput').value.trim();
+            if(ph.length < 10) { 
+                triggerCustomAlert("Please enter a valid 10-digit number!", "Invalid Number", "warning"); 
+                return; 
+            }
+            document.getElementById('phoneInputScreen').classList.add('hidden');
+            document.getElementById('phoneOtpScreen').classList.remove('hidden');
+        }
+
+        function verifyPhoneOTPSimulation() {
+            const otp = document.getElementById('authOtpInput').value.trim();
+            if(otp.length < 4) { 
+                triggerCustomAlert("Please input the verification code packet sent!", "Verification Failed", "error"); 
+                return; 
+            }
+            triggerManualLoginState("Student_" + Math.floor(Math.random() * 900 + 100));
+        }
+
+        function triggerManualLoginState(displayName) {
+            window.isUserLoggedIn = true;
+            toggleModal('loginModal', false);
+            
+            document.getElementById('loginBtn').classList.add('hidden');
+            document.getElementById('userProfileArea').classList.remove('hidden');
+            document.getElementById('navUsername').innerText = displayName;
+            
+            selectedAvatarChar = displayName.charAt(0).toUpperCase();
+            document.getElementById('userInitials').innerText = selectedAvatarChar;
+            updateSubscriptionTimerUI();
+        }
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            const d = document.getElementById('profileDropdown');
+            d.classList.toggle('hidden');
+        }
+        document.addEventListener('click', () => { 
+            const d = document.getElementById('profileDropdown');
+            if(d) d.classList.add('hidden'); 
+        });
+
+        function openEditProfile() {
+            document.getElementById('profileEditNameField').value = document.getElementById('navUsername').innerText;
+            toggleModal('editProfileModal', true);
+        }
+
+        function pickAvatar(gradientClasses, character) {
+            selectedAvatarGradient = gradientClasses;
+            selectedAvatarChar = character;
+            document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('border-purple-500'));
+            event.currentTarget.classList.add('border-purple-500');
+        }
+
+        function saveProfileChanges() {
+            const newName = document.getElementById('profileEditNameField').value.trim();
+            if(!newName) return;
+
+            document.getElementById('navUsername').innerText = newName;
+            
+            const avBox = document.getElementById('userAvatarContainer');
+            avBox.className = `w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr ${selectedAvatarGradient} flex items-center justify-center text-white font-bold text-xs overflow-hidden`;
+            document.getElementById('userInitials').innerText = selectedAvatarChar;
+
+            toggleModal('editProfileModal', false);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSubscriptionTimerUI();
+        });
     </script>
 
-    <!-- FIREBASE SYSTEM INTEGRATION MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBniNpeLAd89NMqxkR9QuECjVtQ9zMT1H0",
@@ -605,7 +885,31 @@
                 await signInWithPopup(auth, googleProvider);
                 toggleModal('loginModal', false);
             } catch (error) {
-                alert("Google Sign-In Error: " + error.message);
+                // Handled via custom overlay terminal layout 
+                console.error(error);
+                if(error.message.includes("billing-not-enabled")) {
+                    triggerCustomAlert("Firebase Phone/OTP verification limits reached. Please continue login via Google Account route or Email directly!", "Gateway Information", "info");
+                } else {
+                    triggerCustomAlert("Google Sign-In Error: " + error.message, "Auth Error", "error");
+                }
+            }
+        };
+
+        window.handleLogout = async function() {
+            try {
+                await signOut(auth);
+                localStorage.removeItem('isPremiumActive');
+                localStorage.removeItem('premiumPurchaseTime');
+                localStorage.removeItem('premiumDurationDays');
+                localStorage.removeItem('premiumPlanTitle');
+                window.isUserLoggedIn = false;
+                window.location.reload();
+            } catch(e) {
+                localStorage.removeItem('isPremiumActive');
+                localStorage.removeItem('premiumPurchaseTime');
+                localStorage.removeItem('premiumDurationDays');
+                localStorage.removeItem('premiumPlanTitle');
+                window.location.reload();
             }
         };
 
@@ -616,8 +920,8 @@
                 document.getElementById('userProfileArea').classList.remove('hidden');
                 document.getElementById('navUsername').innerText = user.displayName || "Student";
                 document.getElementById('userInitials').innerText = (user.displayName || "S").charAt(0).toUpperCase();
-            } else {
-                window.isUserLoggedIn = false;
+                updateSubscriptionTimerUI(); 
+            } else if(!window.isUserLoggedIn) {
                 document.getElementById('loginBtn').classList.remove('hidden');
                 document.getElementById('userProfileArea').classList.add('hidden');
             }
