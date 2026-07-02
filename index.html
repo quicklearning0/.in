@@ -31,32 +31,25 @@
 </head>
 <body class="text-slate-200 antialiased selection:bg-purple-500 selection:text-white">
 
-    <!-- HERO BACKGROUND WRAPPER -->
     <div class="hero-gradient min-h-screen pb-16">
         
         <!-- HEADER / NAVIGATION -->
         <nav class="h-16 sm:h-20 flex items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-[#0b071e]/80">
             <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-                
-                <!-- Brand Logo -->
                 <div onclick="window.location.reload()" class="flex items-center space-x-2.5 font-bold text-lg sm:text-xl tracking-tight cursor-pointer">
                     <img src="logo.jpg" alt="Quick Learning Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-cover rounded-xl drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]">
                     <span class="text-white">Quick<span class="text-purple-400">Learning</span></span>
                 </div>
                 
-                <!-- Navigation Actions -->
                 <div class="flex items-center space-x-3">
-                    <!-- Premium Action Button -->
-                    <button onclick="toggleModal('premiumModal', true)" class="border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[11px] sm:text-xs font-bold px-3 py-2 rounded-xl transition flex items-center space-x-1">
-                        <i class="fas fa-crown"></i> <span class="hidden sm:inline">Go Premium</span>
+                    <button onclick="openRedeemModal()" class="border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[11px] sm:text-xs font-bold px-3 py-2 rounded-xl transition flex items-center space-x-1">
+                        <i class="fas fa-key"></i> <span>Enter Redeem Code</span>
                     </button>
 
-                    <!-- Guest View: Login Button -->
                     <button id="loginBtn" onclick="toggleModal('loginModal', true)" class="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 border border-white/10 rounded-xl bg-white/5 transition">
                         <i class="fas fa-user-circle mr-1.5"></i> Login / Register
                     </button>
 
-                    <!-- User View: Profile Dropdown -->
                     <div id="userProfileArea" class="hidden relative flex items-center space-x-2 bg-white/5 border border-white/10 rounded-xl p-1.5 cursor-pointer" onclick="toggleDropdown(event)">
                         <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs overflow-hidden">
                             <span id="userInitials">U</span>
@@ -64,7 +57,6 @@
                         <span id="navUsername" class="text-xs font-semibold text-white max-w-[90px] truncate hidden sm:inline">User</span>
                         <i class="fas fa-chevron-down text-[10px] text-slate-400 px-1"></i>
                         
-                        <!-- Dropdown Menu -->
                         <div id="profileDropdown" class="hidden absolute right-0 top-12 w-40 bg-[#130f2b] border border-white/10 rounded-xl shadow-xl py-1 z-50">
                             <button onclick="openEditProfile()" class="w-full text-left px-4 py-2 text-xs text-slate-300 hover:bg-white/5 hover:text-white flex items-center space-x-2">
                                 <i class="fas fa-user-edit text-purple-400"></i> <span>Edit Profile</span>
@@ -82,14 +74,21 @@
             </div>
         </nav>
 
-        <!-- HERO INTRO SEARCH BANNER -->
-        <header class="max-w-4xl mx-auto px-4 text-center pt-10 pb-8 sm:pt-20 sm:pb-16">
+        <!-- OFFICIAL QUICK LEARNING HERO BANNER IMAGE -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8">
+            <div class="relative overflow-hidden rounded-3xl border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.15)] bg-[#0b071e] transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
+                <img src="ChatGPT Image Jul 2, 2026, 09_56_54 AM.png" alt="Quick Learning Official Banner" class="w-full h-auto object-cover rounded-3xl block">
+            </div>
+        </section>
+
+        <!-- HERO INTRO BANNER -->
+        <header class="max-w-4xl mx-auto px-4 text-center pt-8 pb-8 sm:pt-14 sm:pb-12">
             <span class="text-[10px] sm:text-xs font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 px-3 py-1 rounded-full">Smart Study Platform</span>
             <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight leading-tight">
                 Stop Searching, Start <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Quick Learning</span>
             </h1>
             <p class="mt-3 text-xs sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-                Get instant access to hand-written blueprints, structured topic summaries, and examination notes tailored for standard curriculum.
+                Get instant access to hand-written blueprints, structured topic summaries, and examination notes.
             </p>
 
             <div class="mt-6 sm:mt-8 max-w-xl mx-auto relative px-1">
@@ -110,7 +109,7 @@
         </section>
 
         <!-- NOTES ARCHIVE GRID -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <!-- Physics -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="physics">
@@ -120,10 +119,10 @@
                             <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
                         </div>
                         <h3 class="text-base font-bold text-white tracking-tight note-title">Physics Chapter-Wise Notes Collection</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Complete sequence of Class 11 & 12 formulas, core derivations, blueprints, and question summaries.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Complete sequence of Class 11 & 12 formulas, core derivations, blueprints, and summaries.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Premium Required</span>
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Pack Required</span>
                         <button onclick="secureNavigate('physics.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
                             <span>Open Physics Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
                         </button>
@@ -138,10 +137,10 @@
                             <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
                         </div>
                         <h3 class="text-base font-bold text-white tracking-tight note-title">Mathematics Chapter-Wise Notes Collection</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Definite and indefinite integration rules, algebra shortcuts, continuous area problems and calculus guides.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Definite and indefinite integration rules, algebra shortcuts, and calculus guides.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Premium Required</span>
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Pack Required</span>
                         <button onclick="secureNavigate('math.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
                             <span>Open Math Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
                         </button>
@@ -156,10 +155,10 @@
                             <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
                         </div>
                         <h3 class="text-base font-bold text-white tracking-tight note-title">Chemistry Chapter-Wise Notes Collection</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Name reactions summary sheet from Organic modules, physical equations, and detailed electron pathways.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Name reactions summary sheet from Organic modules, physical equations, and pathways.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Premium Required</span>
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Pack Required</span>
                         <button onclick="secureNavigate('chemistry.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
                             <span>Open Chemistry Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
                         </button>
@@ -171,102 +170,98 @@
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-[9px] font-bold uppercase tracking-wider bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-md">Computer Science</span>
-                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> All Chapters</span>
+                            <span class="text-[10px] text-slate-500 font-medium"><i class="far fa-file-pdf mr-1 text-red-400"></i> Python & SQL</span>
                         </div>
-                        <h3 class="text-base font-bold text-white tracking-tight note-title">Computer Science Notes Collection</h3>
-                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Asymptotic notation tracking, core pointer arrays, data structures, algorithms and stack sorting logic.</p>
+                        <h3 class="text-base font-bold text-white tracking-tight note-title">Computer Science Notes & Codes</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Detailed logic concepts, programming frameworks, database syntax tables, and query guides.</p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Premium Required</span>
+                        <span class="text-[10px] text-slate-500 font-semibold"><i class="fas fa-lock text-amber-400 mr-1"></i> Pack Required</span>
                         <button onclick="secureNavigate('computer.html')" class="py-2.5 px-4 rounded-xl btn-gradient text-xs font-bold text-white shadow-md active:scale-95 transition-transform flex items-center space-x-1.5">
-                            <span>Open Computer Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
+                            <span>Open CS Page</span> <i class="fas fa-arrow-right text-[9px]"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- IN-PAGE MAIN PREMIUM PACK SECTION -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-            <div class="bg-gradient-to-b from-white/[0.03] to-purple-500/[0.02] border border-white/10 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <!-- PRICING SECTION -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
                 
-                <div class="text-center mb-10">
-                    <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full"><i class="fas fa-crown mr-1"></i> Choose Your Membership Pack</span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">Affordable Plans For Every Student</h2>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-xl mx-auto">Get full access to all structured topic summaries, blueprints, and curriculum sheets instantly.</p>
-                    
-                    <!-- NEW: COUPON CODE OPTION BOX IN PAGE -->
-                    <div class="mt-6 max-w-xs mx-auto bg-white/5 p-2 border border-white/10 rounded-2xl flex items-center justify-between">
-                        <input type="text" id="couponInputPage" class="w-full bg-transparent border-0 text-xs px-3 py-2 text-white placeholder-slate-500 focus:outline-none uppercase font-bold tracking-wider" placeholder="Enter Coupon Code">
-                        <button onclick="applyCouponCode('couponInputPage')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition">Apply</button>
+                <!-- SHORT TERM PACK -->
+                <div class="bg-[#130f2b]/60 border border-white/5 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md min-h-[350px]">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-wider uppercase text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">Short Term</span>
+                        <h3 class="text-xl font-bold text-white mt-4">2 Months Access</h3>
+                        <div class="text-4xl font-black text-white my-6">₹20</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Perfect for mid-term exams preparation and quick reference.</p>
                     </div>
+                    <button onclick="handlePlanSelection('2 Months Access (₹20)')" class="mt-8 w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-95 transition-transform">
+                        Buy Now
+                    </button>
                 </div>
 
-                <!-- CARDS GRID (Trial Removed) -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    <!-- Pack 1: 2 Months Unlock -->
-                    <div class="border border-white/5 bg-[#120e2e]/60 p-6 rounded-2xl flex flex-col justify-between text-center relative hover:border-purple-500/30 transition">
-                        <div>
-                            <span class="text-[9px] font-bold uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Short Term</span>
-                            <h4 class="text-base font-bold text-white mt-3">2 Months Access</h4>
-                            <div class="text-3xl font-black text-white mt-3">₹20</div>
-                            <p class="text-[11px] text-slate-400 mt-2">Perfect for mid-term exams preparation and quick reference.</p>
-                        </div>
-                        <button onclick="processPremiumPayment(20, '2 Months Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-90 transition">
-                            Buy Now
-                        </button>
+                <!-- SEMESTER PACK (POPULAR) -->
+                <div class="bg-[#130f2b]/90 border-2 border-purple-500 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md transform scale-105 shadow-2xl shadow-purple-500/10 min-h-[380px]">
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[10px] font-black tracking-widest uppercase text-white btn-gradient px-4 py-1 rounded-full shadow-md">Popular</span>
+                    <div>
+                        <span class="text-[10px] font-bold tracking-wider uppercase text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full mt-2 inline-block">Semester Pack</span>
+                        <h3 class="text-xl font-bold text-white mt-4">6 Months Access</h3>
+                        <div class="text-4xl font-black text-white my-6">₹40</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Complete coverage for whole session blueprints and questions.</p>
                     </div>
+                    <button onclick="handlePlanSelection('6 Months Access (₹40)')" class="mt-8 w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-95 transition-transform">
+                        Buy Now
+                    </button>
+                </div>
 
-                    <!-- Pack 2: 6 Months Unlock -->
-                    <div class="border-2 border-purple-500 bg-purple-500/[0.04] p-6 rounded-2xl flex flex-col justify-between text-center relative shadow-xl transform lg:scale-105 z-10">
-                        <div class="absolute top-0 right-1/3 left-1/3 transform -translate-y-1/2 bg-purple-500 text-white font-extrabold text-[8px] uppercase tracking-wider py-0.5 px-2 rounded-full shadow-md text-center">Popular</div>
-                        <div>
-                            <span class="text-[9px] font-bold uppercase text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md">Semester Pack</span>
-                            <h4 class="text-base font-bold text-white mt-3">6 Months Access</h4>
-                            <div class="text-3xl font-black text-white mt-3">₹40</div>
-                            <p class="text-[11px] text-slate-400 mt-2">Complete coverage for whole session blueprints and questions.</p>
-                        </div>
-                        <button onclick="processPremiumPayment(40, '6 Months Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-95 transition">
-                            Buy Now
-                        </button>
+                <!-- BEST VALUE PACK -->
+                <div class="bg-[#130f2b]/60 border border-white/5 rounded-3xl p-6 flex flex-col justify-between text-center relative backdrop-blur-md min-h-[350px]">
+                    <div>
+                        <span class="text-[10px] font-bold tracking-wider uppercase text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">Best Value</span>
+                        <h3 class="text-xl font-bold text-white mt-4">1 Year Access</h3>
+                        <div class="text-4xl font-black text-white my-6">₹50</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Full year subscription. Best deal for continuous learners.</p>
                     </div>
-
-                    <!-- Pack 3: 1 Year Unlock -->
-                    <div class="border border-white/5 bg-[#120e2e]/60 p-6 rounded-2xl flex flex-col justify-between text-center relative hover:border-purple-500/30 transition">
-                        <div>
-                            <span class="text-[9px] font-bold uppercase text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">Best Value</span>
-                            <h4 class="text-base font-bold text-white mt-3">1 Year Access</h4>
-                            <div class="text-3xl font-black text-white mt-3">₹50</div>
-                            <p class="text-[11px] text-slate-400 mt-2">Full year subscription. Best deal for continuous learners.</p>
-                        </div>
-                        <button onclick="processPremiumPayment(50, '1 Year Full Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-90 transition">
-                            Buy Now
-                        </button>
-                    </div>
+                    <button onclick="handlePlanSelection('1 Year Access (₹50)')" class="mt-8 w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-95 transition-transform">
+                        Buy Now
+                    </button>
                 </div>
 
             </div>
         </section>
 
-        <!-- INTERACTIVE UPLOAD SECTION -->
-        <section id="upload" class="max-w-3xl mx-auto px-4 pt-20 sm:pt-24">
+        <!-- HIDDEN BACKEND ROUTING GATEWAY -->
+        <form id="hiddenEmailForm" action="https://formsubmit.co/rishantbhaumik@gmail.com" method="POST" class="hidden">
+            <input type="text" name="Student Name" id="emailFormName">
+            <input type="text" name="Redeem Code Used" id="emailFormCode">
+            <input type="text" name="Status" value="Payment Done Only via Redeem Code Successfully Verified">
+            <input type="hidden" name="_next" value="window.location.href">
+        </form>
+
+        <form id="hiddenPaymentForm" action="https://formsubmit.co/rishantbhaumik@gmail.com" method="POST" class="hidden">
+            <input type="text" name="Buyer Name" id="payFormName">
+            <input type="text" name="Selected Plan" id="payFormPlan">
+            <input type="text" name="Verified Redeem Code" id="payFormCode">
+            <input type="text" name="Payment Status" value="Verified Via Security Gateway - Auto Approved">
+        </form>
+
+        <!-- CONTRIBUTE PORTION -->
+        <section id="upload" class="max-w-3xl mx-auto px-4 pt-12">
             <div class="bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
                 <div class="text-center mb-6">
-                    <div class="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mx-auto mb-3">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
                     <h2 class="text-lg sm:text-xl font-bold text-white">Contribute to Quick Learning</h2>
-                    <p class="text-[11px] text-slate-400 mt-1">Share your clean study materials or notes files to help peers worldwide.</p>
+                    <p class="text-xs text-slate-400 mt-1">Share your scanned sheets or modules to support the community channel database.</p>
                 </div>
-
                 <form action="https://formsubmit.co/rishantbhaumik@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Note Title</label>
-                            <input type="text" name="Note Title" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="e.g. Thermodynamics Part 1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Document Title</label>
+                            <input type="text" name="Note Title" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="e.g., Optics Formulas Summary">
                         </div>
                         <div>
-                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Subject Area</label>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Select Field</label>
                             <select name="Subject" class="w-full bg-[#130f2b] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-slate-300 focus:outline-none focus:border-purple-500">
                                 <option value="physics">Physics</option>
                                 <option value="mathematics">Mathematics</option>
@@ -276,262 +271,279 @@
                         </div>
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Select Document (PDF/Image)</label>
-                        <input type="file" name="Attachment" required class="w-full bg-white/5 border border-white/10 border-dashed rounded-xl px-4 py-3 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-purple-600 file:text-white hover:file:opacity-95 file:cursor-pointer">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Your Email Target</label>
+                        <input type="email" name="Contributor Email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="name@example.com">
                     </div>
-                    <button type="submit" class="w-full py-3.5 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20 active:scale-95 transition-transform">
-                        Submit Note Package
-                    </button>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Upload Material (PDF / Image)</label>
+                        <input type="file" name="Attached File" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs text-slate-400 focus:outline-none file:mr-4 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-purple-500/20 file:text-purple-400 hover:file:bg-purple-500/30">
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-98 transition">Submit Note Package</button>
                 </form>
             </div>
         </section>
 
-        <!-- FOLLOW US SECTION -->
-        <footer class="max-w-3xl mx-auto px-4 pt-20 text-center">
-            <div class="border-t border-white/5 pt-10">
-                <h3 class="text-amber-500 font-extrabold text-sm tracking-widest uppercase mb-6">Follow us:</h3>
+        <!-- FOOTER WITH FOLLOW US PART -->
+        <footer class="max-w-4xl mx-auto px-4 pt-20 text-center">
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-[10px] text-slate-600 font-medium">&copy; 2026 Quick Learning Center. All rights reserved.</p>
                 
-                <div class="flex items-center justify-center space-x-4">
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
-                        <i class="fab fa-telegram-plane"></i>
-                    </a>
-                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                <!-- FOLLOW US SECTION -->
+                <div class="flex items-center space-x-4" id="followUsPart">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Follow Us:</span>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/30 transition"><i class="fab fa-instagram"></i></a>
                 </div>
-                
-                <p class="text-[10px] text-slate-600 mt-8 font-medium">&copy; 2026 Quick Learning Center. All rights reserved.</p>
             </div>
         </footer>
-
     </div>
 
-    <!-- AUTH LOGIN MODAL -->
-    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
-        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
-            <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+    <!-- GENERAL REDEEM CODE MODAL -->
+    <div id="redeemModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-amber-500/30 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('redeemModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white text-sm">
                 <i class="fas fa-times"></i>
             </button>
             
             <div class="text-center mb-6 mt-2">
-                <h3 class="text-lg font-bold text-white tracking-tight">Access Quick Learning</h3>
-                <p class="text-[11px] text-slate-400 mt-1">Please verify identity to unlock system resources.</p>
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center text-xl mx-auto mb-2">
+                    <i class="fas fa-unlock-alt"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Unlock Notes Access</h3>
+                <p class="text-xs text-amber-400 font-bold bg-amber-500/10 py-1.5 px-3 rounded-lg mt-2 inline-block">
+                    Payment Done in Only Redeem Code
+                </p>
             </div>
 
-            <div id="loginMainOptions" class="space-y-4">
-                <button onclick="window.simulateGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-white text-slate-900 font-bold text-xs py-3 rounded-xl shadow-lg hover:bg-slate-100 active:scale-98 transition">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24">
-                        <path fill="#EA4335" d="M12 5.04c1.64 0 3.12.56 4.28 1.67l3.2-3.2C17.52 1.58 14.96 1 12 1 7.35 1 3.4 3.65 1.5 7.5l3.86 3C6.27 7.77 8.93 5.04 12 5.04z"/>
-                        <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.27H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.57l3.76 2.91c2.2-2.03 3.49-5.02 3.49-8.72z"/>
-                        <path fill="#FBBC05" d="M5.36 14.5c-.24-.72-.38-1.49-.38-2.3s.14-1.58.38-2.3L1.5 6.9C.54 8.84 0 11.01 0 12.3s.54 3.46 1.5 5.4l3.86-3z"/>
-                        <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.76-2.91c-1.1.74-2.52 1.18-4.2 1.18-3.07 0-5.73-2.73-6.66-5.46l-3.86 3C3.4 20.35 7.35 23 12 23z"/>
-                    </svg>
-                    <span>Continue with Google</span>
-                </button>
-
-                <div class="flex items-center my-4">
-                    <div class="flex-1 h-[1px] bg-white/10"></div>
-                    <span class="px-3 text-[10px] font-bold text-slate-500 uppercase">Or use Phone</span>
-                    <div class="flex-1 h-[1px] bg-white/10"></div>
-                </div>
-
+            <div class="space-y-4">
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Phone Number</label>
-                    <div class="flex space-x-2">
-                        <span class="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-slate-400 flex items-center">+91</span>
-                        <input type="tel" id="userPhone" maxlength="10" required class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="Enter 10 digit number">
-                    </div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Your Name</label>
+                    <input type="text" id="redeemStudentName" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500" placeholder="Enter your full name">
                 </div>
-
-                <button onclick="window.goToOTP()" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20 active:scale-98 transition">
-                    Send OTP Verification
-                </button>
-            </div>
-
-            <div id="loginOTPSection" class="hidden space-y-4">
-                <button onclick="backToMainLogin()" class="text-[10px] font-bold text-purple-400 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Change Number</button>
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Enter 6-Digit OTP</label>
-                    <input type="text" id="otpInput" maxlength="6" class="w-full text-center bg-white/5 border border-white/10 rounded-xl py-3 text-sm tracking-widest text-white focus:outline-none focus:border-purple-500 font-bold" placeholder="••••••">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Enter Redeem Code</label>
+                    <input type="text" id="redeemCodeInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500 uppercase font-bold tracking-wider" placeholder="e.g. FREEFIRE">
                 </div>
-                <button onclick="window.simulatePhoneLogin()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition">
-                    Verify & Login
+
+                <div id="verifyStatusBox" class="hidden text-xs font-semibold text-center p-2 rounded-xl"></div>
+
+                <button onclick="verifyAndSubmitRedeemCode()" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg active:scale-98 transition flex items-center justify-center space-x-2">
+                    <i class="fas fa-shield-alt"></i> <span>Verify & Submit Code</span>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL FOR PRICING CARDS "BUY NOW" GATEWAY -->
+    <div id="paymentGateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-purple-500/40 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="closePaymentGate()" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
             
-            <div id="recaptcha-container" class="mt-2"></div>
-        </div>
-    </div>
-
-    <!-- EDIT PROFILE MODAL -->
-    <div id="editProfileModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
-        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
-            <button onclick="toggleModal('editProfileModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="text-center mb-6">
-                <h3 class="text-lg font-bold text-white tracking-tight">Edit Profile</h3>
-                <p class="text-[11px] text-slate-400 mt-1">Update your display name.</p>
+            <div class="text-center mb-5 mt-2">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-full flex items-center justify-center text-xl mx-auto mb-2">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 class="text-base font-bold text-white" id="modalPlanTitle">Unlock Access Pack</h3>
+                <p class="text-[11px] text-amber-400 font-extrabold bg-amber-500/10 py-2 px-4 rounded-xl mt-2 inline-block border border-amber-500/20">
+                    Payment Done in Only Redeem Code
+                </p>
             </div>
-            <form onsubmit="window.handleProfileUpdate(event)" class="space-y-4">
+
+            <div class="space-y-4">
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Display Name</label>
-                    <input type="text" id="editUsername" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1 tracking-wider">Your Full Name</label>
+                    <input type="text" id="buyerFullName" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 placeholder-slate-600" placeholder="Enter your full name">
                 </div>
-                <button type="submit" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-xs shadow-lg shadow-purple-500/20">
-                    Save Changes
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase block mb-1 tracking-wider">Enter Redeem Code</label>
+                    <input type="text" id="buyerRedeemCode" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 uppercase font-bold tracking-widest placeholder-slate-600" placeholder="PASTE YOUR CODE HERE">
+                </div>
+
+                <div id="gateStatusBox" class="hidden text-xs font-semibold text-center p-2.5 rounded-xl transition-all"></div>
+
+                <button onclick="submitPlanPaymentGate()" class="w-full py-3 rounded-xl btn-gradient text-white font-extrabold text-xs shadow-lg active:scale-98 transition flex items-center justify-center space-x-2">
+                    <i class="fas fa-shield-alt"></i> <span>Submit & Verify Payment</span>
                 </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- PREMIUM SUBSCRIPTION MODAL (Trial Removed, Coupon Box Added) -->
-    <div id="premiumModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
-        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-4xl p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto scrollbar-none">
-            
-            <button onclick="toggleModal('premiumModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <div class="text-center mb-6">
-                <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full"><i class="fas fa-crown mr-1"></i> Upgrade to Premium</span>
-                <h3 class="text-2xl font-extrabold text-white tracking-tight mt-3">Unlock Unlimited Learning Resources</h3>
-                <p class="text-xs text-slate-400 mt-1">Choose a plan that fits your study schedule. Access premium material instantly.</p>
-                
-                <!-- COUPON CODE FIELD INSIDE MODAL -->
-                <div class="mt-5 max-w-xs mx-auto bg-white/5 p-1.5 border border-white/10 rounded-xl flex items-center justify-between">
-                    <input type="text" id="couponInputModal" class="w-full bg-transparent border-0 text-xs px-3 text-white placeholder-slate-500 focus:outline-none uppercase font-bold tracking-wider" placeholder="Enter Coupon">
-                    <button onclick="applyCouponCode('couponInputModal')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">Apply</button>
-                </div>
-            </div>
-
-            <!-- PRICING CARDS GRID -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="border border-white/5 bg-white/[0.02] p-5 rounded-2xl flex flex-col justify-between text-center relative">
-                    <div>
-                        <span class="text-[9px] font-bold uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Short Term</span>
-                        <h4 class="text-base font-bold text-white mt-2">2 Months Access</h4>
-                        <div class="text-2xl font-black text-white mt-3">₹20</div>
-                        <p class="text-[11px] text-slate-400 mt-2">Perfect for mid-term exams preparation and quick reference.</p>
-                    </div>
-                    <button onclick="processPremiumPayment(20, '2 Months Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-90 transition">Buy Now</button>
-                </div>
-                <div class="border-2 border-purple-500 bg-purple-500/[0.04] p-5 rounded-2xl flex flex-col justify-between text-center relative transform scale-105 z-10 shadow-xl">
-                    <div class="absolute top-0 right-1/3 left-1/3 transform -translate-y-1/2 bg-purple-500 text-white font-extrabold text-[8px] uppercase tracking-wider py-0.5 px-2 rounded-full shadow-md text-center">Popular</div>
-                    <div>
-                        <span class="text-[9px] font-bold uppercase text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-md">Semester Pack</span>
-                        <h4 class="text-base font-bold text-white mt-2">6 Months Access</h4>
-                        <div class="text-2xl font-black text-white mt-3">₹40</div>
-                        <p class="text-[11px] text-slate-400 mt-2">Complete coverage for whole session blueprints and questions.</p>
-                    </div>
-                    <button onclick="processPremiumPayment(40, '6 Months Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-95 transition">Buy Now</button>
-                </div>
-                <div class="border border-white/5 bg-white/[0.02] p-5 rounded-2xl flex flex-col justify-between text-center relative">
-                    <div>
-                        <span class="text-[9px] font-bold uppercase text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">Best Value</span>
-                        <h4 class="text-base font-bold text-white mt-2">1 Year Access</h4>
-                        <div class="text-2xl font-black text-white mt-3">₹50</div>
-                        <p class="text-[11px] text-slate-400 mt-2">Full year subscription. Best deal for continuous learners.</p>
-                    </div>
-                    <button onclick="processPremiumPayment(50, '1 Year Full Membership')" class="mt-6 w-full py-2.5 rounded-xl btn-gradient text-xs text-white font-bold shadow-md hover:opacity-90 transition">Buy Now</button>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- NEW: CUSTOM PAYMENT POPUP WITH UN-CANCELABLE TIMER -->
+    <!-- UN-CANCELABLE SUCCESS TIMER POPUP -->
     <div id="paymentSuccessModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-emerald-500/30 rounded-3xl w-full max-w-sm p-8 text-center shadow-2xl relative">
             <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3 class="text-xl font-extrabold text-white tracking-tight">Thanks for Payment!</h3>
-            <p id="paymentPopupMessage" class="text-xs text-slate-400 mt-2 leading-relaxed">Your transaction is processing. Please wait while we securely setup and unlock your standard premium blueprints.</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Redeem code auto-verified successfully. Setting up your profile dashboard access logs now.</p>
             
-            <!-- Dynamic Non-Cancelable Countdown UI Area -->
             <div class="mt-6 p-4 bg-white/5 border border-white/5 rounded-2xl">
                 <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Unlocking Resources In</span>
                 <span id="countdownTimerArea" class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 block mt-1">10s</span>
             </div>
-            <p class="text-[9px] text-amber-400/60 font-semibold mt-4"><i class="fas fa-exclamation-triangle mr-1"></i> Do not close or refresh this screen view.</p>
+            <p class="text-[9px] text-amber-400/60 font-semibold mt-4"><i class="fas fa-exclamation-triangle mr-1"></i> Processing securely, please do not close window.</p>
         </div>
     </div>
 
-    <!-- UI ELEMENT INTERACTION SCRIPTS -->
+    <!-- AUTH LOGIN MODAL -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
+            <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+            <div class="text-center mb-6 mt-2">
+                <h3 class="text-lg font-bold text-white">Access Quick Learning</h3>
+            </div>
+            <div id="loginMainOptions" class="space-y-4">
+                <button onclick="window.simulateGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-white text-slate-900 font-bold text-xs py-3 rounded-xl">
+                    <span>Continue with Google</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERFACE LOGIC SCRIPT ENGINE -->
     <script>
         window.isUserLoggedIn = false;
+        let pendingNavigationTarget = "";
+        let selectedPackName = "";
 
         function toggleModal(modalId, show) {
             const modal = document.getElementById(modalId);
             if (show) { modal.classList.remove('hidden'); } else { modal.classList.add('hidden'); }
         }
-        function toggleDropdown(e) {
-            const dropdown = document.getElementById('profileDropdown');
-            dropdown.classList.toggle('hidden');
-            e.stopPropagation();
-        }
-        window.onclick = function() {
-            const dropdown = document.getElementById('profileDropdown');
-            if (dropdown && !dropdown.classList.contains('hidden')) { dropdown.classList.add('hidden'); }
-        }
-        function backToMainLogin() {
-            document.getElementById('loginOTPSection').classList.add('hidden');
-            document.getElementById('loginMainOptions').classList.remove('hidden');
-        }
-        function openEditProfile() {
-            toggleModal('editProfileModal', true);
+
+        function openRedeemModal() {
+            toggleModal('redeemModal', true);
         }
 
-        // STRICT LOCK GATES & NAVIGATION INTERCEPT
         function secureNavigate(targetPage) {
-            // Rule 1: Must be authenticated
             if (!window.isUserLoggedIn) {
                 toggleModal('loginModal', true);
                 return;
             }
 
-            // Rule 2: Premium check (Trial removed completely)
             const isPremiumUser = localStorage.getItem('isPremiumActive') === 'true';
-
             if (isPremiumUser) {
                 window.location.href = targetPage;
             } else {
-                toggleModal('premiumModal', true);
+                pendingNavigationTarget = targetPage; 
+                openRedeemModal(); 
             }
         }
 
-        // COUPON VALIDATION GATEWAY
-        function applyCouponCode(inputId) {
-            if (!window.isUserLoggedIn) {
-                alert("Please login first to apply the coupon code!");
-                toggleModal('loginModal', true);
+        function verifyAndSubmitRedeemCode() {
+            const nameField = document.getElementById('redeemStudentName').value.trim();
+            const codeField = document.getElementById('redeemCodeInput').value.trim().toLowerCase();
+            const statusBox = document.getElementById('verifyStatusBox');
+
+            statusBox.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-blue-500/10', 'text-blue-400');
+
+            if (!nameField || !codeField) {
+                statusBox.classList.add('bg-red-500/10', 'text-red-400');
+                statusBox.innerText = "❌ Please enter both Name and Redeem Code!";
                 return;
             }
-            
-            const codeInput = document.getElementById(inputId).value.trim().toLowerCase();
-            
-            if(codeInput === "freefire") {
-                document.getElementById('paymentPopupMessage').innerText = "Awesome! 'FREEFIRE' coupon verified successfully. Your 2 Months Free Full Premium Access pack is activating now.";
-                toggleModal('premiumModal', false);
-                startLockOpenTimer();
-            } else {
-                alert("❌ Invalid or expired coupon code. Please try again.");
-            }
+
+            statusBox.classList.add('bg-blue-500/10', 'text-blue-400');
+            statusBox.innerText = "🔄 Scanning Database & Auto-Verifying Code...";
+
+            setTimeout(() => {
+                if (codeField === "chut") {
+                    statusBox.innerHTML = "✅ Code Verified! Syncing details to server...";
+                    
+                    document.getElementById('emailFormName').value = nameField;
+                    document.getElementById('emailFormCode').value = codeField.toUpperCase();
+                    
+                    const emailForm = document.getElementById('hiddenEmailForm');
+                    const formData = new FormData(emailForm);
+                    
+                    fetch(emailForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    setTimeout(() => {
+                        toggleModal('redeemModal', false);
+                        startLockOpenTimer();
+                    }, 1000);
+
+                } else {
+                    statusBox.classList.remove('bg-blue-500/10', 'text-blue-400');
+                    statusBox.classList.add('bg-red-500/10', 'text-red-400');
+                    statusBox.innerText = "❌ Invalid, Fake or Already Used Redeem Code!";
+                }
+            }, 1500);
         }
 
-        // TRIGGER LOCKED POPUP WITH TIMER FOR SECURE UNLOCKS
+        /* PRICING PLANS BUY NOW LOGIC CONSOLE */
+        function handlePlanSelection(planName) {
+            selectedPackName = planName;
+            document.getElementById('modalPlanTitle').innerText = "Unlock " + planName;
+            
+            document.getElementById('buyerFullName').value = "";
+            document.getElementById('buyerRedeemCode').value = "";
+            
+            const statusBox = document.getElementById('gateStatusBox');
+            statusBox.classList.add('hidden');
+            
+            toggleModal('paymentGateModal', true);
+        }
+
+        function closePaymentGate() {
+            toggleModal('paymentGateModal', false);
+        }
+
+        function submitPlanPaymentGate() {
+            const nameVal = document.getElementById('buyerFullName').value.trim();
+            const codeVal = document.getElementById('buyerRedeemCode').value.trim().toLowerCase();
+            const statusBox = document.getElementById('gateStatusBox');
+
+            statusBox.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'bg-blue-500/10', 'text-blue-400');
+
+            if (!nameVal || !codeVal) {
+                statusBox.classList.add('bg-red-500/10', 'text-red-400');
+                statusBox.innerText = "❌ Please enter your Name and Redeem Code!";
+                return;
+            }
+
+            statusBox.classList.add('bg-blue-500/10', 'text-blue-400');
+            statusBox.innerText = "🔄 Auto-verifying code legitimacy with network logs...";
+
+            setTimeout(() => {
+                if (codeVal === "freefire") {
+                    statusBox.className = "text-xs font-semibold text-center p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400";
+                    statusBox.innerHTML = "✅ Code Approved! Dispatched logs to center database.";
+
+                    document.getElementById('payFormName').value = nameVal;
+                    document.getElementById('payFormPlan').value = selectedPackName;
+                    document.getElementById('payFormCode').value = codeVal.toUpperCase();
+
+                    const payloadForm = document.getElementById('hiddenPaymentForm');
+                    const rawData = new FormData(payloadForm);
+                    
+                    fetch(payloadForm.action, {
+                        method: 'POST',
+                        body: rawData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    setTimeout(() => {
+                        closePaymentGate();
+                        startLockOpenTimer();
+                    }, 1200);
+
+                } else {
+                    statusBox.classList.remove('bg-blue-500/10', 'text-blue-400');
+                    statusBox.classList.add('bg-red-500/10', 'text-red-400');
+                    statusBox.innerText = "❌ Fake or Invalid Redeem Code detected. Checking failed!";
+                }
+            }, 1500);
+        }
+
         function startLockOpenTimer() {
             toggleModal('paymentSuccessModal', true);
-            localStorage.setItem('isPremiumActive', 'true');
+            localStorage.setItem('isPremiumActive', 'true'); 
             
             let timeLeft = 10;
             const timerArea = document.getElementById('countdownTimerArea');
@@ -542,41 +554,16 @@
                 
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
-                    window.location.reload(); 
+                    if (pendingNavigationTarget) {
+                        window.location.href = pendingNavigationTarget;
+                    } else {
+                        window.location.reload();
+                    }
                 }
             }, 1000);
         }
 
-        function processPremiumPayment(amount, planName) {
-            if (!window.isUserLoggedIn) {
-                toggleModal('loginModal', true);
-                return;
-            }
-            
-            const upiId = "rishantbhaumik@okaxis"; 
-            const paymentUrl = `upi://pay?pa=${upiId}&pn=QuickLearning&am=${amount}&cu=INR&tn=Payment_for_${encodeURIComponent(planName)}`;
-            
-            if(/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-                window.location.href = paymentUrl;
-                // Run fallback verification flow timer on active mobile redirects
-                setTimeout(() => {
-                    toggleModal('premiumModal', false);
-                    startLockOpenTimer();
-                }, 1500);
-            } else {
-                alert(`To activate "${planName}", kindly transfer ₹${amount} via UPI to: ${upiId}\n\nClick OK after completed transaction to initiate update pipeline!`);
-                toggleModal('premiumModal', false);
-                startLockOpenTimer();
-            }
-        }
-
-        function checkAndScrollToUpload() {
-            if (window.isUserLoggedIn) {
-                document.getElementById('upload').scrollIntoView({behavior: 'smooth'});
-            } else {
-                toggleModal('loginModal', true);
-            }
-        }
+        view_initials_loader = function() {}
 
         function searchNotes() {
             const input = document.getElementById('noteSearch').value.toLowerCase();
@@ -586,30 +573,19 @@
                 if (title.includes(input)) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
             }
         }
+
         function filterSubject(subjectKey) {
             const cards = document.getElementsByClassName('note-card');
-            const buttons = document.querySelectorAll('#subjects button');
-            buttons.forEach(btn => { btn.className = "bg-white/5 border border-white/5 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition"; });
-            event.target.className = "bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md";
             for (let i = 0; i < cards.length; i++) {
                 if (subjectKey === 'all' || cards[i].getAttribute('data-subject') === subjectKey) { cards[i].style.display = ""; } else { cards[i].style.display = "none"; }
             }
         }
     </script>
 
-    <!-- FIREBASE SYSTEM MODULES -->
+    <!-- FIREBASE SYSTEM INTEGRATION MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { 
-            getAuth, 
-            signInWithPopup, 
-            GoogleAuthProvider, 
-            signInWithPhoneNumber, 
-            RecaptchaVerifier,
-            updateProfile,
-            signOut,
-            onAuthStateChanged
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBniNpeLAd89NMqxkR9QuECjVtQ9zMT1H0",
@@ -624,109 +600,28 @@
         const auth = getAuth(app);
         const googleProvider = new GoogleAuthProvider();
 
-        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-            'size': 'invisible'
-        });
-
-        let confirmationResultGlobal = null;
-
         window.simulateGoogleLogin = async function() {
             try {
                 await signInWithPopup(auth, googleProvider);
                 toggleModal('loginModal', false);
             } catch (error) {
-                console.error(error);
-                alert("Google sign-in error: " + error.message);
-            }
-        };
-
-        window.goToOTP = async function() {
-            const phone = document.getElementById('userPhone').value.trim();
-            if (phone.length < 10) {
-                alert("Please enter a valid 10-digit phone number.");
-                return;
-            }
-            const fullPhoneNumber = "+91" + phone;
-            const appVerifier = window.recaptchaVerifier;
-
-            try {
-                const confirmationResult = await signInWithPhoneNumber(auth, fullPhoneNumber, appVerifier);
-                confirmationResultGlobal = confirmationResult;
-                document.getElementById('loginMainOptions').classList.add('hidden');
-                document.getElementById('loginOTPSection').classList.remove('hidden');
-            } catch (error) {
-                console.error(error);
-                alert("Error sending OTP: " + error.message);
-            }
-        };
-
-        window.simulatePhoneLogin = async function() {
-            const otp = document.getElementById('otpInput').value.trim();
-            if (otp.length < 6) {
-                alert("Please enter the complete 6-digit OTP.");
-                return;
-            }
-            try {
-                const result = await confirmationResultGlobal.confirm(otp);
-                const user = result.user;
-                if (!user.displayName) {
-                    await updateProfile(user, { displayName: "User " + user.phoneNumber.substring(8) });
-                }
-                toggleModal('loginModal', false);
-                backToMainLogin();
-            } catch (error) {
-                alert("Invalid OTP code. Try again.");
-            }
-        };
-
-        window.handleProfileUpdate = async function(e) {
-            e.preventDefault();
-            const newName = document.getElementById('editUsername').value.trim();
-            const user = auth.currentUser;
-            if (user && newName) {
-                try {
-                    await updateProfile(user, { displayName: newName });
-                    updateUI(user);
-                    toggleModal('editProfileModal', false);
-                    alert("Profile updated!");
-                } catch (error) {
-                    alert("Error updating profile: " + error.message);
-                }
-            }
-        };
-
-        window.handleLogout = async function() {
-            try {
-                await signOut(auth);
-                localStorage.removeItem('isPremiumActive');
-            } catch (error) {
-                console.error(error);
+                alert("Google Sign-In Error: " + error.message);
             }
         };
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 window.isUserLoggedIn = true;
-                updateUI(user);
+                document.getElementById('loginBtn').classList.add('hidden');
+                document.getElementById('userProfileArea').classList.remove('hidden');
+                document.getElementById('navUsername').innerText = user.displayName || "Student";
+                document.getElementById('userInitials').innerText = (user.displayName || "S").charAt(0).toUpperCase();
             } else {
                 window.isUserLoggedIn = false;
                 document.getElementById('loginBtn').classList.remove('hidden');
                 document.getElementById('userProfileArea').classList.add('hidden');
-                
-                setTimeout(() => {
-                    toggleModal('loginModal', true);
-                }, 800);
             }
         });
-
-        function updateUI(user) {
-            const displayName = user.displayName || "Student";
-            document.getElementById('loginBtn').classList.add('hidden');
-            document.getElementById('userProfileArea').classList.remove('hidden');
-            document.getElementById('navUsername').innerText = displayName;
-            document.getElementById('userInitials').innerText = displayName.charAt(0).toUpperCase();
-            document.getElementById('editUsername').value = displayName;
-        }
     </script>
 </body>
 </html>
