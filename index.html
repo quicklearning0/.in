@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Learning | Access Quality Educational Notes Instantly</title>
     
+    <!-- WEBSITE FAVICON -->
     <link class="rounded-xl" rel="icon" type="image/jpeg" href="logo.jpg">
     
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -27,25 +31,32 @@
 </head>
 <body class="text-slate-200 antialiased selection:bg-purple-500 selection:text-white">
 
+    <!-- HERO BACKGROUND WRAPPER -->
     <div class="hero-gradient min-h-screen pb-16">
         
+        <!-- HEADER / NAVIGATION -->
         <nav class="h-16 sm:h-20 flex items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-[#0b071e]/80">
             <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 
+                <!-- Brand Logo -->
                 <div onclick="window.location.reload()" class="flex items-center space-x-2.5 font-bold text-lg sm:text-xl tracking-tight cursor-pointer">
                     <img src="logo.jpg" alt="Quick Learning Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-cover rounded-xl drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]">
                     <span class="text-white">Quick<span class="text-purple-400">Learning</span></span>
                 </div>
                 
+                <!-- Navigation Actions -->
                 <div class="flex items-center space-x-3">
+                    <!-- Premium Action Button -->
                     <button onclick="toggleModal('premiumModal', true)" class="border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-[11px] sm:text-xs font-bold px-3 py-2 rounded-xl transition flex items-center space-x-1">
                         <i class="fas fa-crown"></i> <span class="hidden sm:inline">Go Premium</span>
                     </button>
 
+                    <!-- Guest View: Login Button -->
                     <button id="loginBtn" onclick="toggleModal('loginModal', true)" class="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 border border-white/10 rounded-xl bg-white/5 transition">
                         <i class="fas fa-user-circle mr-1.5"></i> Login / Register
                     </button>
 
+                    <!-- User View: Profile Dropdown -->
                     <div id="userProfileArea" class="hidden relative flex items-center space-x-2 bg-white/5 border border-white/10 rounded-xl p-1.5 cursor-pointer" onclick="toggleDropdown(event)">
                         <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-xs overflow-hidden">
                             <span id="userInitials">U</span>
@@ -53,6 +64,7 @@
                         <span id="navUsername" class="text-xs font-semibold text-white max-w-[90px] truncate hidden sm:inline">User</span>
                         <i class="fas fa-chevron-down text-[10px] text-slate-400 px-1"></i>
                         
+                        <!-- Dropdown Menu -->
                         <div id="profileDropdown" class="hidden absolute right-0 top-12 w-40 bg-[#130f2b] border border-white/10 rounded-xl shadow-xl py-1 z-50">
                             <button onclick="openEditProfile()" class="w-full text-left px-4 py-2 text-xs text-slate-300 hover:bg-white/5 hover:text-white flex items-center space-x-2">
                                 <i class="fas fa-user-edit text-purple-400"></i> <span>Edit Profile</span>
@@ -70,6 +82,7 @@
             </div>
         </nav>
 
+        <!-- HERO INTRO SEARCH BANNER -->
         <header class="max-w-4xl mx-auto px-4 text-center pt-10 pb-8 sm:pt-20 sm:pb-16">
             <span class="text-[10px] sm:text-xs font-bold tracking-widest text-purple-400 uppercase bg-purple-500/10 px-3 py-1 rounded-full">Smart Study Platform</span>
             <h1 class="text-3xl sm:text-5xl font-extrabold text-white mt-4 tracking-tight leading-tight">
@@ -85,6 +98,7 @@
             </div>
         </header>
 
+        <!-- SUBJECT FILTER ROW -->
         <section id="subjects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
             <div class="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
                 <button onclick="filterSubject('all')" class="bg-purple-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-md shadow-purple-600/10">All Resources</button>
@@ -95,8 +109,10 @@
             </div>
         </section>
 
+        <!-- NOTES ARCHIVE GRID -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="notesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <!-- Physics -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="physics">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -114,6 +130,7 @@
                     </div>
                 </div>
 
+                <!-- Mathematics -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="mathematics">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -131,6 +148,7 @@
                     </div>
                 </div>
 
+                <!-- Chemistry -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="chemistry">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -148,6 +166,7 @@
                     </div>
                 </div>
 
+                <!-- Computer Science -->
                 <div class="note-card glass-card rounded-2xl p-5 flex flex-col justify-between" data-subject="computer">
                     <div>
                         <div class="flex justify-between items-start mb-4">
@@ -167,6 +186,7 @@
             </div>
         </main>
 
+        <!-- IN-PAGE MAIN PREMIUM PACK SECTION -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
             <div class="bg-gradient-to-b from-white/[0.03] to-purple-500/[0.02] border border-white/10 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
                 
@@ -174,21 +194,17 @@
                     <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full"><i class="fas fa-crown mr-1"></i> Choose Your Membership Pack</span>
                     <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">Affordable Plans For Every Student</h2>
                     <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-xl mx-auto">Get full access to all structured topic summaries, blueprints, and curriculum sheets instantly.</p>
+                    
+                    <!-- NEW: COUPON CODE OPTION BOX IN PAGE -->
+                    <div class="mt-6 max-w-xs mx-auto bg-white/5 p-2 border border-white/10 rounded-2xl flex items-center justify-between">
+                        <input type="text" id="couponInputPage" class="w-full bg-transparent border-0 text-xs px-3 py-2 text-white placeholder-slate-500 focus:outline-none uppercase font-bold tracking-wider" placeholder="Enter Coupon Code">
+                        <button onclick="applyCouponCode('couponInputPage')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition">Apply</button>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="border border-white/5 bg-[#120e2e]/60 p-6 rounded-2xl flex flex-col justify-between text-center relative hover:border-purple-500/30 transition">
-                        <div>
-                            <span class="text-[9px] font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md">New Users</span>
-                            <h4 class="text-base font-bold text-white mt-3">2 Days Trial</h4>
-                            <div class="text-3xl font-black text-white mt-3">₹0</div>
-                            <p class="text-[11px] text-slate-400 mt-2">Get full access to all chapter-wise PDF booklets instantly.</p>
-                        </div>
-                        <button onclick="activateTrial()" class="mt-6 w-full py-2.5 rounded-xl bg-white/5 text-xs text-white border border-white/10 font-bold hover:bg-white/10 transition">
-                            Start Free Trial
-                        </button>
-                    </div>
-
+                <!-- CARDS GRID (Trial Removed) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Pack 1: 2 Months Unlock -->
                     <div class="border border-white/5 bg-[#120e2e]/60 p-6 rounded-2xl flex flex-col justify-between text-center relative hover:border-purple-500/30 transition">
                         <div>
                             <span class="text-[9px] font-bold uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Short Term</span>
@@ -201,6 +217,7 @@
                         </button>
                     </div>
 
+                    <!-- Pack 2: 6 Months Unlock -->
                     <div class="border-2 border-purple-500 bg-purple-500/[0.04] p-6 rounded-2xl flex flex-col justify-between text-center relative shadow-xl transform lg:scale-105 z-10">
                         <div class="absolute top-0 right-1/3 left-1/3 transform -translate-y-1/2 bg-purple-500 text-white font-extrabold text-[8px] uppercase tracking-wider py-0.5 px-2 rounded-full shadow-md text-center">Popular</div>
                         <div>
@@ -214,6 +231,7 @@
                         </button>
                     </div>
 
+                    <!-- Pack 3: 1 Year Unlock -->
                     <div class="border border-white/5 bg-[#120e2e]/60 p-6 rounded-2xl flex flex-col justify-between text-center relative hover:border-purple-500/30 transition">
                         <div>
                             <span class="text-[9px] font-bold uppercase text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">Best Value</span>
@@ -230,6 +248,7 @@
             </div>
         </section>
 
+        <!-- INTERACTIVE UPLOAD SECTION -->
         <section id="upload" class="max-w-3xl mx-auto px-4 pt-20 sm:pt-24">
             <div class="bg-gradient-to-b from-white/[0.04] to-transparent p-5 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
                 <div class="text-center mb-6">
@@ -267,8 +286,36 @@
             </div>
         </section>
 
+        <!-- FOLLOW US SECTION -->
+        <footer class="max-w-3xl mx-auto px-4 pt-20 text-center">
+            <div class="border-t border-white/5 pt-10">
+                <h3 class="text-amber-500 font-extrabold text-sm tracking-widest uppercase mb-6">Follow us:</h3>
+                
+                <div class="flex items-center justify-center space-x-4">
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="#" target="_blank" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center text-slate-300 hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-500/5 transition-all duration-300 text-lg">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                
+                <p class="text-[10px] text-slate-600 mt-8 font-medium">&copy; 2026 Quick Learning Center. All rights reserved.</p>
+            </div>
+        </footer>
+
     </div>
 
+    <!-- AUTH LOGIN MODAL -->
     <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
             <button onclick="toggleModal('loginModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
@@ -325,6 +372,7 @@
         </div>
     </div>
 
+    <!-- EDIT PROFILE MODAL -->
     <div id="editProfileModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-sm p-6 relative shadow-2xl">
             <button onclick="toggleModal('editProfileModal', false)" class="absolute right-4 top-4 text-slate-400 hover:text-white transition">
@@ -346,6 +394,7 @@
         </div>
     </div>
 
+    <!-- PREMIUM SUBSCRIPTION MODAL (Trial Removed, Coupon Box Added) -->
     <div id="premiumModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-bg">
         <div class="bg-[#110c26] border border-white/10 rounded-3xl w-full max-w-4xl p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto scrollbar-none">
             
@@ -353,22 +402,20 @@
                 <i class="fas fa-times"></i>
             </button>
 
-            <div class="text-center mb-8">
+            <div class="text-center mb-6">
                 <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full"><i class="fas fa-crown mr-1"></i> Upgrade to Premium</span>
                 <h3 class="text-2xl font-extrabold text-white tracking-tight mt-3">Unlock Unlimited Learning Resources</h3>
                 <p class="text-xs text-slate-400 mt-1">Choose a plan that fits your study schedule. Access premium material instantly.</p>
+                
+                <!-- COUPON CODE FIELD INSIDE MODAL -->
+                <div class="mt-5 max-w-xs mx-auto bg-white/5 p-1.5 border border-white/10 rounded-xl flex items-center justify-between">
+                    <input type="text" id="couponInputModal" class="w-full bg-transparent border-0 text-xs px-3 text-white placeholder-slate-500 focus:outline-none uppercase font-bold tracking-wider" placeholder="Enter Coupon">
+                    <button onclick="applyCouponCode('couponInputModal')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">Apply</button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="border border-white/5 bg-white/[0.02] p-5 rounded-2xl flex flex-col justify-between text-center relative overflow-hidden">
-                    <div>
-                        <span class="text-[9px] font-bold uppercase text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md">New Users</span>
-                        <h4 class="text-base font-bold text-white mt-2">2 Days Trial</h4>
-                        <div class="text-2xl font-black text-white mt-3">₹0</div>
-                        <p class="text-[11px] text-slate-400 mt-2">Get full access to all chapter-wise PDF booklets instantly.</p>
-                    </div>
-                    <button onclick="activateTrial()" class="mt-6 w-full py-2 rounded-xl bg-white/5 text-xs text-white border border-white/10 font-bold hover:bg-white/10 transition">Start Free Trial</button>
-                </div>
+            <!-- PRICING CARDS GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="border border-white/5 bg-white/[0.02] p-5 rounded-2xl flex flex-col justify-between text-center relative">
                     <div>
                         <span class="text-[9px] font-bold uppercase text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md">Short Term</span>
@@ -401,6 +448,25 @@
         </div>
     </div>
 
+    <!-- NEW: CUSTOM PAYMENT POPUP WITH UN-CANCELABLE TIMER -->
+    <div id="paymentSuccessModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 modal-bg">
+        <div class="bg-[#110c26] border border-emerald-500/30 rounded-3xl w-full max-w-sm p-8 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-white tracking-tight">Thanks for Payment!</h3>
+            <p id="paymentPopupMessage" class="text-xs text-slate-400 mt-2 leading-relaxed">Your transaction is processing. Please wait while we securely setup and unlock your standard premium blueprints.</p>
+            
+            <!-- Dynamic Non-Cancelable Countdown UI Area -->
+            <div class="mt-6 p-4 bg-white/5 border border-white/5 rounded-2xl">
+                <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest block">Unlocking Resources In</span>
+                <span id="countdownTimerArea" class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 block mt-1">10s</span>
+            </div>
+            <p class="text-[9px] text-amber-400/60 font-semibold mt-4"><i class="fas fa-exclamation-triangle mr-1"></i> Do not close or refresh this screen view.</p>
+        </div>
+    </div>
+
+    <!-- UI ELEMENT INTERACTION SCRIPTS -->
     <script>
         window.isUserLoggedIn = false;
 
@@ -425,53 +491,83 @@
             toggleModal('editProfileModal', true);
         }
 
-        // PREMIUM MEMBERSHIP & INTERCEPT ROUTE LOGIC
+        // STRICT LOCK GATES & NAVIGATION INTERCEPT
         function secureNavigate(targetPage) {
+            // Rule 1: Must be authenticated
             if (!window.isUserLoggedIn) {
                 toggleModal('loginModal', true);
                 return;
             }
 
+            // Rule 2: Premium check (Trial removed completely)
             const isPremiumUser = localStorage.getItem('isPremiumActive') === 'true';
-            const trialStartDate = localStorage.getItem('trialStartTimestamp');
-            
-            let isTrialValid = false;
-            if (trialStartDate) {
-                const now = new Date().getTime();
-                const differenceInDays = (now - parseInt(trialStartDate)) / (1000 * 60 * 60 * 24);
-                if (differenceInDays <= 2) {
-                    isTrialValid = true;
-                }
-            }
 
-            if (isPremiumUser || isTrialValid) {
+            if (isPremiumUser) {
                 window.location.href = targetPage;
             } else {
                 toggleModal('premiumModal', true);
             }
         }
 
-        function activateTrial() {
-            if (!localStorage.getItem('trialStartTimestamp')) {
-                const currentTimestamp = new Date().getTime();
-                localStorage.setItem('trialStartTimestamp', currentTimestamp);
-                alert("🎉 Your 2-Days Free Trial has been activated successfully!");
-            } else {
-                alert("You have already exhausted or initiated your free trial period.");
+        // COUPON VALIDATION GATEWAY
+        function applyCouponCode(inputId) {
+            if (!window.isUserLoggedIn) {
+                alert("Please login first to apply the coupon code!");
+                toggleModal('loginModal', true);
+                return;
             }
-            toggleModal('premiumModal', false);
+            
+            const codeInput = document.getElementById(inputId).value.trim().toLowerCase();
+            
+            if(codeInput === "freefire") {
+                document.getElementById('paymentPopupMessage').innerText = "Awesome! 'FREEFIRE' coupon verified successfully. Your 2 Months Free Full Premium Access pack is activating now.";
+                toggleModal('premiumModal', false);
+                startLockOpenTimer();
+            } else {
+                alert("❌ Invalid or expired coupon code. Please try again.");
+            }
+        }
+
+        // TRIGGER LOCKED POPUP WITH TIMER FOR SECURE UNLOCKS
+        function startLockOpenTimer() {
+            toggleModal('paymentSuccessModal', true);
+            localStorage.setItem('isPremiumActive', 'true');
+            
+            let timeLeft = 10;
+            const timerArea = document.getElementById('countdownTimerArea');
+            
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                timerArea.innerText = timeLeft + "s";
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.reload(); 
+                }
+            }, 1000);
         }
 
         function processPremiumPayment(amount, planName) {
+            if (!window.isUserLoggedIn) {
+                toggleModal('loginModal', true);
+                return;
+            }
+            
             const upiId = "rishantbhaumik@okaxis"; 
             const paymentUrl = `upi://pay?pa=${upiId}&pn=QuickLearning&am=${amount}&cu=INR&tn=Payment_for_${encodeURIComponent(planName)}`;
             
             if(/Android|iPhone|iPad/i.test(navigator.userAgent)) {
                 window.location.href = paymentUrl;
+                // Run fallback verification flow timer on active mobile redirects
+                setTimeout(() => {
+                    toggleModal('premiumModal', false);
+                    startLockOpenTimer();
+                }, 1500);
             } else {
-                alert(`To activate "${planName}", kindly transfer ₹${amount} via UPI to: ${upiId}\n\nYour resources will unlock once payment clears!`);
+                alert(`To activate "${planName}", kindly transfer ₹${amount} via UPI to: ${upiId}\n\nClick OK after completed transaction to initiate update pipeline!`);
+                toggleModal('premiumModal', false);
+                startLockOpenTimer();
             }
-            localStorage.setItem('isPremiumActive', 'true');
         }
 
         function checkAndScrollToUpload() {
@@ -501,6 +597,7 @@
         }
     </script>
 
+    <!-- FIREBASE SYSTEM MODULES -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
@@ -601,6 +698,7 @@
         window.handleLogout = async function() {
             try {
                 await signOut(auth);
+                localStorage.removeItem('isPremiumActive');
             } catch (error) {
                 console.error(error);
             }
